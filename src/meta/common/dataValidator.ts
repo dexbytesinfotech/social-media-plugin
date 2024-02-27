@@ -30,9 +30,7 @@ export async function fetchDataWithValidation<T>(accessToken: string, pageId: st
     
         // Check if the response is empty
         if (!response || (Array.isArray(response) && response.length === 0)) {
-            // Send a message indicating no data found
-            console.log("No data found");
-            // You can also throw an error or handle this case based on your application's needs
+           return response
         }
     
         // Return the validated response

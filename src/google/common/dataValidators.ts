@@ -25,7 +25,6 @@ export async function fetchGoogleDataWithValidation<T>(paramIdentifier: string, 
     try {
         // Construct the URL for the API request
         const url = constructYoutubeUrl(paramIdentifier, fields, paramId, limit);
-        console.log(url);
 
         // Make the API request
         const response = await makeGoogleApiRequest<T>(url, accessToken);

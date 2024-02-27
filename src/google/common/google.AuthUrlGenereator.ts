@@ -29,7 +29,7 @@ export class GoogleAuthUrlGenerator {
    * This method constructs the authorization URL using the provided configuration.
    * @returns {string} - The complete Google OAuth authorization URL.
    */
-  public getAuthorizationUrl(): string {
+  public getAuthorizationUrl(): object {
     // Creating URL parameters using URLSearchParams
     const params = new URLSearchParams({
       response_type: Constants.GOOGLE.CODE,
@@ -40,6 +40,10 @@ export class GoogleAuthUrlGenerator {
     });
 
     // Constructing the complete authorization URL
-    return `${Constants.GOOGLE.GOOGLE_AUTH_URL}?${params.toString()}`;
+    return {
+      code:200,
+      statusText:"ok",
+      url:`${Constants.GOOGLE.GOOGLE_AUTH_URL}?${params.toString()}`
+    };
   }
 }

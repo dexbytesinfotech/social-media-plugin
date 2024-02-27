@@ -62,6 +62,3 @@ export const GoogleParams = {
     }
 }
 
-export interface staticGoogleParam{
-    snippet?:boolean
-}

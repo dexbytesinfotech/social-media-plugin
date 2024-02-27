@@ -1,6 +1,7 @@
 
 import { Meta } from "./meta";
 import { Google } from "./google";
+import { GoogleTokenGenerator } from "./google/common/google.TokenGenerator";
 
 export{
     Meta,Google
@@ -29,19 +30,20 @@ export{
     const clientId= '197651720211-tv3j6rall0uic4mmqa9g5hdf6ttedk1e.apps.googleusercontent.com'
     const clientSecret ='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'
     const redirectUri= 'http://localhost:3000/auth/facebook/callback'
-    const storedRefreshToken = "1//0gBd26hpLlvVvCgYIARAAGBASNwF-L9IrRk4lzXrS--74GCeWTkSWixXMpimnj4cvsjGy_DiTPgU7RS9i4vEtvORxsqeUGBsu9r4";
+    const storedRefreshToken = "1//0gVTosoIfj6rXCgYIARAAGBASNwF-L9IrAeyzTNym8I57itYXzNbT6R-vPQPIIQRQJUynotH00sFLKlUJJPCqe8PSn-wmXvVFm_4"
     const scope ="https://www.googleapis.com/auth/youtube"
-// const authenticator = new GoogleTokenGenerator(clientId,clientSecret,redirectUri)
+    const code ="4/0AeaYSHBoiXI1Qwn8f2HxrrAHodBQdGsQspu698H1KalK9dnfAVIh7eTP5_A4OHZgg1hF2w"
+const authenticator = new GoogleTokenGenerator(clientId,clientSecret,redirectUri)
 
-//     authenticator.refreshAccessToken(storedRefreshToken)
-//   .then((tokenData) => {
-//     // Handle the refreshed token data
-//     console.log("Refreshed Token Data:", tokenData);
-//   })
-//   .catch((error) => {
-//     // Handle errors
-//     console.error("Error refreshing token:", error.message);
-//   });
+    authenticator.refreshAccessToken(storedRefreshToken)
+  .then((tokenData) => {
+    // Handle the refreshed token data
+    console.log("Refreshed Token Data:", tokenData);
+  })
+  .catch((error) => {
+    // Handle errors
+    console.error("Error refreshing token:", error.message);
+  });
 // const url = new GoogleAuthUrlGenerator(clientId,redirectUri,scope)
 // const resp=url.getAuthorizationUrl()
 // console.log(resp)
@@ -66,31 +68,31 @@ export{
 
 //  // Replace with your actual access token
 
-const accesstoken = "ya29.a0AfB_byDyiKMFcBZcocK2XM_nsVqrumbz1523hFsL3uWFx_3TZ4tn22nXIwlq_Zn2InrmA8Xc51HCDMNVgsAWkzH0wf0HStuhpGqE5RNU7ewSG_9oIeRbfSUo6Yi11Vd_mPpdSYIaeZyEWxo6pxcrJn9TuCbSCHO4xmRq2QaCgYKARgSARASFQHGX2MielizqfU5m13Lutn6iHAxMg0173"
-// // const  data = new YoutubeChannelDetails(accesstoken)
+// const accesstoken = "ya29.a0AfB_byDyiKMFcBZcocK2XM_nsVqrumbz1523hFsL3uWFx_3TZ4tn22nXIwlq_Zn2InrmA8Xc51HCDMNVgsAWkzH0wf0HStuhpGqE5RNU7ewSG_9oIeRbfSUo6Yi11Vd_mPpdSYIaeZyEWxo6pxcrJn9TuCbSCHO4xmRq2QaCgYKARgSARASFQHGX2MielizqfU5m13Lutn6iHAxMg0173"
+// // // const  data = new YoutubeChannelDetails(accesstoken)
 
-// // const response = data.fetchChannelDetails("",{contentDetails:true,snippet:true})
-// // console.log(response)
+// // // const response = data.fetchChannelDetails("",{contentDetails:true,snippet:true})
+// // // console.log(response)
 
-const data3 =  Google.AccessToken(clientId,clientSecret,redirectUri)
-// // Wrap the asynchronous operation in an async function
-async function fetchData() {
-    try {
-      data3
-        // const response = await data3.fetchChannelVideosDetails('AEJwdqfpujk',{snippet:true,statistics:true,fileDetails:true});
-        // const responses = await data3.fetchChannelActivities("UC3ZUakany9YL7D_FWqiXLww",{id:true,snippet:true,contentDetails:true})
-        // const response2 = await data2.fetchPlaylistItems("PLelmWrYIjLYs2f_w8axd4GHcoHyXxUoFE",{snippet:true,limit:1,status:true})
-        // const response3 = await data3.fetchChannelSubscriptions("UC3ZUakany9YL7D_FWqiXLww",{id:true,limit:1,snippet:true})
-        // const response = await data3.fetchRegions({snippet:true})
-        const responses = await data3.refreshAccessToken(storedRefreshToken)
-        console.log(responses);
-    } catch (error) {
-        console.error("Error:", error);
-    }
-}
+// const data3 =  Google.AccessToken(clientId,clientSecret,redirectUri)
+// // // Wrap the asynchronous operation in an async function
+// async function fetchData() {
+//     try {
+//       data3
+//         // const response = await data3.fetchChannelVideosDetails('AEJwdqfpujk',{snippet:true,statistics:true,fileDetails:true});
+//         // const responses = await data3.fetchChannelActivities("UC3ZUakany9YL7D_FWqiXLww",{id:true,snippet:true,contentDetails:true})
+//         // const response2 = await data2.fetchPlaylistItems("PLelmWrYIjLYs2f_w8axd4GHcoHyXxUoFE",{snippet:true,limit:1,status:true})
+//         // const response3 = await data3.fetchChannelSubscriptions("UC3ZUakany9YL7D_FWqiXLww",{id:true,limit:1,snippet:true})
+//         // const response = await data3.fetchRegions({snippet:true})
+//         const responses = await data3.refreshAccessToken(storedRefreshToken)
+//         console.log(responses);
+//     } catch (error) {
+//         console.error("Error:", error);
+//     }
+// }
 
-// // // Call the async function
-fetchData();
+// // // // Call the async function
+// fetchData();
 
 // UC3ZUakany9YL7D_FWqiXLww
 //w0RKkuiEejs'

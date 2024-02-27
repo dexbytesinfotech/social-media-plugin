@@ -9,7 +9,7 @@ import { handleApiError, validateAccessToken } from '../common/common.helpers';
 export async function makeInstagramApiRequest<T>(UserId: string, fields: string, limit: number, accessToken: string, urlParam: string): Promise<T> {
     // Construct the API URL using the provided page ID
     const apiUrl = `${Constants.META_API_BASE_URL}/${Constants.META_GRAPH_API_VERSION}/${UserId}/${urlParam}`;
-    console.log(apiUrl)
+
     try {
         const params: Record<string, any> = {
             fields: fields,

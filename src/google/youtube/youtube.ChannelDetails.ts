@@ -1,6 +1,6 @@
 import { fetchGoogleDataWithValidation } from "../common/dataValidators";
-import { GoogleResponse, YoutubeChannelDetailsParams, commonForYoutube ,YoutubChannelSubscriptionsParams, YoutubeChannelPlaylistParams, YoutubeChannelPLaylistItemsParams, YoutubeChannelSectionsParams, YoutubeChannelVideosParams, YoutubeChannelVideosDetailsParams, YoutubeChannelActivitiesParams, YoutubeChannelVideosCaptions} from "../common/interfaces";
-import { GoogleParams, staticGoogleParam } from "../common/parameters.google";
+import { GoogleResponse, YoutubeChannelDetailsParams,staticGoogleParam ,YoutubChannelSubscriptionsParams, YoutubeChannelPlaylistParams, YoutubeChannelPLaylistItemsParams, YoutubeChannelSectionsParams, YoutubeChannelVideosParams, YoutubeChannelVideosDetailsParams, YoutubeChannelActivitiesParams, YoutubeChannelVideosCaptions} from "../common/interfaces";
+import { GoogleParams } from "../common/parameters.google";
 import { IYoutubeRepository } from "../factory/google.Factory.Interfaces";
 import { buildFields, userLimit } from "../helpers/youtube.FieldGenerator";
 
@@ -31,7 +31,6 @@ export class Youtube implements IYoutubeRepository {
     private async fetchData<T>(paramId:string,paramIdentifier:string,params: object= {}): Promise<T> {
         const fields = buildFields(params);
         const limit = userLimit(params);
-        console.log(limit);
         return await fetchGoogleDataWithValidation<T>(paramIdentifier, this.accessToken, paramId, fields, limit);
     }
 
@@ -149,8 +148,8 @@ export class Youtube implements IYoutubeRepository {
      * @param {YoutubeChannelVideosCaptions} params - The parameters for fetching video captions.
      * @returns {Promise<GoogleResponse>} - A promise that resolves with the fetched video captions data.
      */
-    fetchVideosCaption = async (paramId: string, params: YoutubeChannelVideosCaptions): Promise<GoogleResponse> => {
+    fetchVideosCaption = async (videoId: string, params: YoutubeChannelVideosCaptions): Promise<GoogleResponse> => {
         const paramIdentifier = GoogleParams.paramIdentifier.captions;
-        return this.fetchData<GoogleResponse>(paramId, paramIdentifier, params);
+        return this.fetchData<GoogleResponse>(videoId, paramIdentifier, params);
     }
 }

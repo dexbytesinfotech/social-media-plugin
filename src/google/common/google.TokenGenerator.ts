@@ -68,9 +68,10 @@ export class GoogleTokenGenerator {
         try {
             const response: AxiosResponse<any> = await axios.post(Constants.GOOGLE.GOOGLE_TOKEN_GENERATOR_URL, data);
             return response.data;
-        } catch (error) {
-            console.error(error);
-            throw new Error(errorMessage);
+        } catch (response) {
+            return {
+                response
+            }
         }
     }
 }

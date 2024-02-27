@@ -47,7 +47,7 @@ export class GenerateMetaAuthUrl {
    * @param {GenerateAuthUrlParams} params - Parameters for generating the OAuth URL.
    * @returns {string} The OAuth URL.
    */
-  generateAuthUrl({ authType }: GenerateAuthUrlParams): string {
+  generateAuthUrl({ authType }: GenerateAuthUrlParams): object {
     // Validate required parameter
     if (!authType) {
       throw new Error(Messages.missingParameters);
@@ -76,7 +76,11 @@ export class GenerateMetaAuthUrl {
     });
 
     // Construct and return the final URL
-    return `${baseAuthUrl}?${urlParams.toString()}`;
+    return {
+      code:200,
+      statusText:"Ok",
+      url:`${baseAuthUrl}?${urlParams.toString()}`
+    }
   }
 }
 
@@ -136,7 +140,7 @@ export class MetaLongLivedAccessToken {
     } catch (error) {
       // Handle AxiosError and throw a custom error object
       if (axios.isAxiosError(error) && error.response) {
-        return Messages.notFound;
+        return {error};
       }
     }
   }

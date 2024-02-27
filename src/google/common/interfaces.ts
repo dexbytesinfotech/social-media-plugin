@@ -154,3 +154,7 @@ export interface YoutubChannelSubscriptionsParams {
   contentDetails?: boolean; // Include content details.
   limit?: number; // Limit the number of subscriptions.
 }
+
+export interface staticGoogleParam{
+  snippet?:boolean
+}

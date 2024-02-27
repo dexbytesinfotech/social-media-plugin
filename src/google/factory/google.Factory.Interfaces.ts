@@ -1,7 +1,6 @@
-import { GoogleResponse, YoutubeChannelActivitiesParams, YoutubeChannelDetailsParams, YoutubeChannelPLaylistItemsParams, YoutubeChannelPlaylistParams, YoutubeChannelSectionsParams, YoutubeChannelVideosCaptions, YoutubeChannelVideosDetailsParams, YoutubeChannelVideosParams } from "../common/interfaces";
-import { staticGoogleParam } from "../common/parameters.google";
+import { GoogleResponse, staticGoogleParam , YoutubeChannelActivitiesParams, YoutubeChannelDetailsParams, YoutubeChannelPLaylistItemsParams, YoutubeChannelPlaylistParams, YoutubeChannelSectionsParams, YoutubeChannelVideosCaptions, YoutubeChannelVideosDetailsParams, YoutubeChannelVideosParams } from "../common/interfaces";
 
-/**
+/*
  * Interface defining the contract for a YouTube repository.
  * This interface outlines the methods that any YouTube repository implementation must provide.
  * These methods are used to fetch various types of data from the YouTube API, such as channel details, playlists, videos, and more.
