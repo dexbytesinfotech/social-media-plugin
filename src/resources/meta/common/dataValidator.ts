@@ -1,4 +1,4 @@
-import { Messages } from '../../helpers/messages';
+import {TextMessages} from '../../../enums/generals';
 import { validateAccessToken, makeApiRequest} from './common.helpers';
 
 /**
@@ -14,11 +14,11 @@ export async function fetchDataWithValidation<T>(accessToken: string, pageId: st
 
     // If there is an issue with the access token, return an error response
     if (accessTokenValidationResult) {
-        return createErrorResponse<T>(Messages.invalidAccessToken);
+        return createErrorResponse<T>(TextMessages.INVALID_ACCESS_TOKEN);
     }
 
     if(!fields){
-        return createErrorResponse<T>(Messages.notFound)
+        return createErrorResponse<T>(TextMessages.NOT_FOUND)
     }
     try {
         // Make the API request and get the response
@@ -64,10 +64,10 @@ export async function fetchDataWithValidation<T>(accessToken: string, pageId: st
 export function validateApiResponse<T>(response: T): void {
     // Ensure that the response is an object
     if (!response || typeof response !== 'object') {
-        throw new Error(Messages.invalidApiResponseFormat);
+        throw new Error(TextMessages.INVALID_API_RESPONSE_FORMAT);
     }
     // Check if the response data is empty
     if (Object.keys(response).length === 0) {
-        throw createErrorResponse<T>(Messages.notFound);
+        throw createErrorResponse<T>(TextMessages.NOT_FOUND);
     }
 }

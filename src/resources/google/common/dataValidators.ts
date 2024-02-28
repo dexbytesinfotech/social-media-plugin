@@ -1,5 +1,5 @@
 import { makeGoogleApiRequest, validateAccessToken } from "./common.helpers";
-import { Messages } from "../../helpers/messages";
+import { TextMessages} from "../../../enums/generals";
 import { constructYoutubeUrl } from "./urlConstructors";
 
 /**
@@ -19,7 +19,7 @@ export async function fetchGoogleDataWithValidation<T>(paramIdentifier: string, 
 
     // If the access token is invalid, return an error response
     if (accessTokenValidationResult) {
-        return createErrorResponse<T>(Messages.invalidAccessToken);
+        return createErrorResponse<T>(TextMessages.INVALID_ACCESS_TOKEN);
     }
 
     try {
@@ -70,11 +70,11 @@ export function createErrorResponse<T>(message: string): T {
 export function validateApiResponse<T>(response: T): void {
     // Ensure that the response is an object
     if (!response || typeof response !== 'object') {
-        throw new Error(Messages.invalidApiResponseFormat);
+        throw new Error(TextMessages.INVALID_API_RESPONSE_FORMAT);
     }
 
     // Check if the response data is empty
     if (Object.keys(response).length ===  0) {
-        throw createErrorResponse<T>(Messages.notFound);
+        throw createErrorResponse<T>(TextMessages.NOT_FOUND);
     }
 }

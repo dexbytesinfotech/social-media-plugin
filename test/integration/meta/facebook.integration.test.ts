@@ -1,10 +1,10 @@
 // Import necessary modules and classes
-import { EventsParams, MediaParams, PhotoParams, VideoParams } from '../../../src/meta/common/interfaces';
-import { FacebookPageDetails } from '../../../src/meta/facebook/facebookPage.Detailes';
-import { FacebookPageMedia } from '../../../src/meta/facebook/facebookPage.Media';
+import { EventsParams, MediaParams, PhotoParams, VideoParams } from '../../../src/resources/meta/common/interfaces';
+import { FacebookPageDetails } from '../../../src/resources/meta/facebook/facebookPage.Detailes';
+import { FacebookPageMedia } from '../../../src/resources/meta/facebook/facebookPage.Media';
 
 // Mocking the FacebookPage.Media and FacebookPage.Details classes
-jest.mock('../../../src/meta/facebook/facebookPage.Media', () => {
+jest.mock('../../../src/resources/meta/facebook/facebookPage.Media', () => {
     return {
         FacebookPageMedia: jest.fn().mockImplementation(() => {
             return {
@@ -19,7 +19,7 @@ jest.mock('../../../src/meta/facebook/facebookPage.Media', () => {
     };
 });
 
-jest.mock('../../../src/meta/facebook/facebookPage.Detailes', () => {
+jest.mock('../../../src/resources/meta/facebook/facebookPage.Detailes', () => {
     return {
         FacebookPageDetails: jest.fn().mockImplementation(() => {
             return {

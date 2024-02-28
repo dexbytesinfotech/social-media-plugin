@@ -1,5 +1,5 @@
 // Importing necessary modules and interfaces
-import { Constants } from "../../constants";
+import { Constants } from "../../../constants";
 
 /**
  * Class for generating Google OAuth authorization URL.

@@ -1,5 +1,5 @@
-import { Constants } from '../../constants';
-import { Messages } from '../../helpers/messages';
+import { Constants } from '../../../constants';
+import { TextMessages } from '../../../enums/generals';
 import axios, {AxiosResponse } from 'axios';
 
 /**
@@ -33,7 +33,7 @@ export class GenerateMetaAuthUrl {
   constructor({ clientId, redirectUri, permissions }: OAuthParams) {
     // Validate required parameters
     if (!clientId || !redirectUri || !permissions || permissions.length ===  0) {
-      throw new Error(Messages.missingParameters);
+      throw new Error(TextMessages.MISSING_PARAMETERS);
     }
 
     // Initialize class properties with the provided parameters
@@ -50,7 +50,7 @@ export class GenerateMetaAuthUrl {
   generateAuthUrl({ authType }: GenerateAuthUrlParams): object {
     // Validate required parameter
     if (!authType) {
-      throw new Error(Messages.missingParameters);
+      throw new Error(TextMessages.MISSING_PARAMETERS);
     }
 
     // Base URL for the OAuth dialog

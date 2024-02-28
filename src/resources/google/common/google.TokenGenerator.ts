@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Constants } from '../../constants';
+import { Constants } from '../../../constants';
 
 /**
  * Class for handling Google authentication and token retrieval.

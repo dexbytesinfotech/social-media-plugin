@@ -1,7 +1,7 @@
 
 import axios from 'axios';
-import { Constants } from '../../constants';
-import { Messages } from '../../helpers/messages';
+import { Constants } from '../../../constants';
+import {TextMessages} from '../../../enums/generals';
 import { MetaParams } from './parameters.meta';
 
 // Interface to define the structure of an account with an id and name
@@ -49,7 +49,7 @@ export class UserIdFetcher {
             return extractedData;
         } catch (error) {
             // If an error occurs, throw a new error with a message indicating that the requested data was not found
-            throw new Error(Messages.notFound);
+            throw new Error(TextMessages.NOT_FOUND);
         }
     }
 }

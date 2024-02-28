@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { Messages } from '../../helpers/messages';
-import { Constants } from '../../constants';
+import { TextMessages } from '../../../enums/generals';
+import { Constants } from '../../../constants';
 import { createErrorResponse, validateApiResponse } from '../common/dataValidator';
 import { handleApiError, validateAccessToken } from '../common/common.helpers';
 
@@ -50,7 +50,7 @@ export async function fetchInstagramUsersDataWithValidation<T>(accessToken: stri
     const accessTokenValidationResult = validateAccessToken(accessToken);
     // If there is an issue with the access token, return an error response
     if (accessTokenValidationResult) {
-        return createErrorResponse<T>(Messages.invalidAccessToken);
+        return createErrorResponse<T>(TextMessages.INVALID_ACCESS_TOKEN);
     }
     try {
         // Make the API request and get the response
@@ -63,7 +63,7 @@ export async function fetchInstagramUsersDataWithValidation<T>(accessToken: stri
         // Check if the response is empty
         if (!response || (Array.isArray(response) && response.length === 0)) {
             // Send a message indicating no data found
-            console.log("No data found");
+            console.log(TextMessages.NOT_FOUND);
             // You can also throw an error or handle this case based on your application's needs
         }
 

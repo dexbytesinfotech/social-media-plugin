@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { Messages } from '../../helpers/messages';
-import { Constants } from '../../constants';
+import { TextMessages } from '../../../enums/generals';
+import { Constants } from '../../../constants';
 
 /**
  * Handles API errors and returns a custom error message.
@@ -13,7 +13,7 @@ export async function handleApiError<T>(error: any, customErrorMessage: any): Pr
     if (axios.isAxiosError(error) && error.response?.status ===  401) {
         throw {
             error: true,
-            message: Messages.invalidAccessToken,
+            message: TextMessages.INVALID_ACCESS_TOKEN,
         } as T;
     }
 
@@ -77,7 +77,7 @@ export function validateAccessToken(accessToken: string) {
     if (!accessToken) {
         return {
             error: true,
-            message: Messages.missingAccessToken,
+            message: TextMessages.MISSING_ACCESS_TOKEN,
         };
     }
 
@@ -85,7 +85,7 @@ export function validateAccessToken(accessToken: string) {
     if (accessToken.length <  10) {
         return {
             error: true,
-            message: Messages.invalidAccessToken,
+            message: TextMessages.INVALID_ACCESS_TOKEN,
         };
     }
 }

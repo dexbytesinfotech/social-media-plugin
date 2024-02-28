@@ -1,11 +1,17 @@
 
-import { Meta } from "./meta";
-import { Google } from "./google";
-import { GoogleTokenGenerator } from "./google/common/google.TokenGenerator";
+import { Meta } from "./resources/meta";
+import { Google } from "./resources/google";
+import { GoogleTokenGenerator } from "./resources/google/common/google.TokenGenerator";
+
 
 export{
     Meta,Google
 }
+
+
+
+const abc = Google.Youtube("");
+const a1 =abc.fetchChannelVideos("obvdfvhdfv",{limit:10,id:true})
 
 // import { GoogleAuthUrlGenerator } from "./google/common/google.AuthUrlGenereator";
 // import {GoogleTokenGenerator} from "./google/common/google.TokenGenerator";
@@ -36,11 +42,11 @@ export{
 const authenticator = new GoogleTokenGenerator(clientId,clientSecret,redirectUri)
 
     authenticator.refreshAccessToken(storedRefreshToken)
-  .then((tokenData) => {
+  .then((tokenData: any) => {
     // Handle the refreshed token data
     console.log("Refreshed Token Data:", tokenData);
   })
-  .catch((error) => {
+  .catch((error: { message: any; }) => {
     // Handle errors
     console.error("Error refreshing token:", error.message);
   });

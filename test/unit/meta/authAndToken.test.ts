@@ -2,10 +2,10 @@
 import {
     MetaLongLivedAccessToken,
     GenerateMetaAuthUrl,
-} from '../../../src/meta/common/accessTokengenerator';
+} from '../../../src/resources/meta/common/accessTokengenerator';
 
 // Mocking the external dependency to avoid actual API calls during tests
-jest.mock('../../../src/meta/common/accessTokengenerator', () => {
+jest.mock('../../../src/resources/meta/common/accessTokengenerator', () => {
     return {
         // Mocking GenerateMetaAuthUrl class
         GenerateMetaAuthUrl: jest.fn().mockImplementation(() => {

@@ -1,10 +1,10 @@
 // Importing necessary interfaces and classes from the Meta module
-import { InstagramBasicDetailsParams, InstagramMediaParams } from '../../../src/meta/common/interfaces';
-import { InstagramAccountDetails } from '../../../src/meta/instagram/instagram.Details';
-import { InstagramAccountMedia } from '../../../src/meta/instagram/instagram.Media';
+import { InstagramBasicDetailsParams, InstagramMediaParams } from '../../../src/resources/meta/common/interfaces';
+import { InstagramAccountDetails } from '../../../src/resources/meta/instagram/instagram.Details';
+import { InstagramAccountMedia } from '../../../src/resources/meta/instagram/instagram.Media';
 
 // Mocking the InstagramAccount.Media class to avoid actual API calls during tests
-jest.mock('../../../src/meta/instagram/instagram.Media', () => {
+jest.mock('../../../src/resources/meta/instagram/instagram.Media', () => {
     return {
         InstagramAccountMedia: jest.fn().mockImplementation(() => {
             return {
@@ -68,7 +68,7 @@ describe('Instagram Media', () => {
 });
 
 // Mocking the InstagramAccount.Details class to avoid actual API calls during tests
-jest.mock('../../../src/meta/instagram/instagram.Details', () => {
+jest.mock('../../../src/resources/meta/instagram/instagram.Details', () => {
     return {
         InstagramAccountDetails: jest.fn().mockImplementation(() => {
             return {
