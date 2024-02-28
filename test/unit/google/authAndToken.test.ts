@@ -1,9 +1,9 @@
 // Importing the required classes from the Google authentication module
-import { GoogleAuthUrlGenerator } from '../../src/google/common/google.AuthUrlGenereator';
-import { GoogleTokenGenerator } from '../../src/google/common/google.TokenGenerator';
+import { GoogleAuthUrlGenerator } from '../../../src/google/common/google.AuthUrlGenereator';
+import { GoogleTokenGenerator } from '../../../src/google/common/google.TokenGenerator';
 
 // Mocking the GoogleTokenGenerator class to avoid actual API calls during tests
-jest.mock('../../src/google/common/google.TokenGenerator', () => {
+jest.mock('../../../src/google/common/google.TokenGenerator', () => {
     return {
         GoogleTokenGenerator: jest.fn().mockImplementation(() => {
             return {
@@ -15,7 +15,7 @@ jest.mock('../../src/google/common/google.TokenGenerator', () => {
 });
 
 // Mocking the GoogleAuthUrlGenerator class to avoid actual API calls during tests
-jest.mock('../../src/google/common/google.AuthUrlGenereator', () => {
+jest.mock('../../../src/google/common/google.AuthUrlGenereator', () => {
     return {
         GoogleAuthUrlGenerator: jest.fn().mockImplementation(() => {
             return {

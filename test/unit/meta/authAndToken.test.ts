@@ -1,12 +1,11 @@
 // Importing necessary interfaces and classes from the Meta module
 import {
-    GenerateAuthUrlParams,
     MetaLongLivedAccessToken,
     GenerateMetaAuthUrl,
-} from '../../src/meta/common/accessTokengenerator';
+} from '../../../src/meta/common/accessTokengenerator';
 
 // Mocking the external dependency to avoid actual API calls during tests
-jest.mock('../../src/meta/common/accessTokengenerator', () => {
+jest.mock('../../../src/meta/common/accessTokengenerator', () => {
     return {
         // Mocking GenerateMetaAuthUrl class
         GenerateMetaAuthUrl: jest.fn().mockImplementation(() => {

@@ -1,10 +1,10 @@
 // Importing necessary interfaces and classes from the Meta module
-import { EventsParams, MediaParams, PhotoParams, VideoParams } from '../../src/meta/common/interfaces';
-import { FacebookPageDetails } from '../../src/meta/facebook/facebookPage.Detailes';
-import { FacebookPageMedia } from '../../src/meta/facebook/facebookPage.Media';
+import { EventsParams, MediaParams, PhotoParams, VideoParams } from '../../../src/meta/common/interfaces';
+import { FacebookPageDetails } from '../../../src/meta/facebook/facebookPage.Detailes';
+import { FacebookPageMedia } from '../../../src/meta/facebook/facebookPage.Media';
 
 // Mocking the FacebookPage.Media class to avoid actual API calls during tests
-jest.mock('../../src/meta/facebook/facebookPage.Media', () => {
+jest.mock('../../../src/meta/facebook/facebookPage.Media', () => {
     return {
         FacebookPageMedia: jest.fn().mockImplementation(() => {
             return {
@@ -96,7 +96,7 @@ describe('Facebook Page Media', () => {
 });
 
 // Mocking the FacebookPage.Details class to avoid actual API calls during tests
-jest.mock('../../src/meta/facebook/facebookPage.Detailes', () => {
+jest.mock('../../../src/meta/facebook/facebookPage.Detailes', () => {
     return {
         FacebookPageDetails: jest.fn().mockImplementation(() => {
             return {

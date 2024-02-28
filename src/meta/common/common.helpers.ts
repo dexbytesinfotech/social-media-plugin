@@ -37,7 +37,6 @@ export async function handleApiError<T>(error: any, customErrorMessage: any): Pr
 export async function makeApiRequest<T>(pageId: string, fields: string, accessToken: string): Promise<T> {
     // Construct the API URL using the provided page ID
     const apiUrl = `${Constants.META_API_BASE_URL}/${Constants.META_GRAPH_API_VERSION}/${pageId}`;
-    console.log(apiUrl)
 
     try {
         // Make a GET request to the API with the specified parameters

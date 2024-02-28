@@ -10,12 +10,12 @@ import {
   YoutubeChannelSectionsParams,
   YoutubeChannelVideosCaptions,
   staticGoogleParam
-} from '../../src/google/common/interfaces';
-import { Youtube } from '../../src/google/youtube/youtube.ChannelDetails';
+} from '../../../src/google/common/interfaces';
+import { Youtube } from '../../../src/google/youtube/youtube.ChannelDetails';
 import 'jest';
 
 // Mocking the external dependency to avoid actual API calls during tests
-jest.mock('../../src/google/youtube/youtube.ChannelDetails', () => {
+jest.mock('../../../src/google/youtube/youtube.ChannelDetails', () => {
   return {
     Youtube: jest.fn().mockImplementation(() => {
       return {
