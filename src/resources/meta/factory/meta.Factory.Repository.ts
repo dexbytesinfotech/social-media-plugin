@@ -3,13 +3,13 @@ import { FacebookPageDetails } from "../facebook/facebookPage.Detailes";
 import { FacebookPageMedia } from "../facebook/facebookPage.Media";
 import { InstagramAccountDetails } from "../instagram/instagram.Details";
 import { InstagramAccountMedia } from "../instagram/instagram.Media";
-import { IFacebookPageDetailsRepository, IFacebookPageMediaRepository, IInstagramAccountDetailsRepository, IInstagramAccountMediaRepository } from "./meta.Factory.Interfaces";
+import { IFacebookPageDetailsRepository, IFacebookPageMediaRepository, IInstagramAccountDetailsRepository, IInstagramAccountMediaRepository} from "./meta.Factory.Interfaces";
 
 /**
  * Class representing the Meta platform's repositories.
  * This class acts as a factory for creating instances of various repositories related to Facebook and Instagram.
  */
-export class Meta {
+export class Meta  {
     /**
      * Creates a new instance of the FacebookPageMedia repository.
      * @param {string} accessToken - The access token required for authentication.

@@ -1,0 +1,5 @@
+# .npmignore
+__tests__
+src/
+test/
+tsconfig.json
