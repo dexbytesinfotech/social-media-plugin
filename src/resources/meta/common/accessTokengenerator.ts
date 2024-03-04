@@ -30,7 +30,7 @@ export class GenerateMetaAuthUrl {
    * Constructor for the GenerateMetaAuthUrl class.
    * @param {OAuthParams} params - Parameters for the OAuth class.
    */
-  constructor({ clientId, redirectUri, permissions }: OAuthParams) {
+  constructor(clientId:string,redirectUri:string, permissions:string []) {
     // Validate required parameters
     if (!clientId || !redirectUri || !permissions || permissions.length ===  0) {
       throw new Error(TextMessages.MISSING_PARAMETERS);
@@ -47,7 +47,7 @@ export class GenerateMetaAuthUrl {
    * @param {GenerateAuthUrlParams} params - Parameters for generating the OAuth URL.
    * @returns {string} The OAuth URL.
    */
-  generateAuthUrl({ authType }: GenerateAuthUrlParams): object {
+  generateAuthUrl(authType:string) {
     // Validate required parameter
     if (!authType) {
       throw new Error(TextMessages.MISSING_PARAMETERS);

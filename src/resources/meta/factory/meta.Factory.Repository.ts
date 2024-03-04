@@ -52,8 +52,8 @@ export class Meta {
      * @param {OAuthParams} params - The parameters required for generating the OAuth URL.
      * @returns {GenerateMetaAuthUrl} - An instance of the GenerateMetaAuthUrl class.
      */
-    static GenerateMetaAuthUrl(params: OAuthParams): GenerateMetaAuthUrl {
-        return new GenerateMetaAuthUrl(params);
+    static GenerateMetaAuthUrl(clientId:string,redirectUri:string, permissions:string []): GenerateMetaAuthUrl {
+        return new GenerateMetaAuthUrl(clientId,redirectUri, permissions);
     }
 
     /**

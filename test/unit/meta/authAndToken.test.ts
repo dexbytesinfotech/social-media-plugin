@@ -31,13 +31,13 @@ describe('Get Meta Auth Url and Long Lived Token', () => {
 
     // Initializing the GenerateMetaAuthUrl instance before each test
     beforeEach(() => {
-        authUrl = new GenerateMetaAuthUrl({ clientId, redirectUri, permissions });
+        authUrl = new GenerateMetaAuthUrl( clientId, redirectUri, permissions );
     });
 
     // Test to verify the successful generation of authentication URL
     it('Should successfully return auth url', async () => {
         const authType = "code";
-        const url = await authUrl.generateAuthUrl({ authType });
+        const url = await authUrl.generateAuthUrl("authType");
         expect(url).toBeInstanceOf(Object);
     });
 });
