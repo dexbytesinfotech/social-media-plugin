@@ -9,7 +9,7 @@ import { IFacebookPageDetailsRepository, IFacebookPageMediaRepository, IInstagra
  * Class representing the Meta platform's repositories.
  * This class acts as a factory for creating instances of various repositories related to Facebook and Instagram.
  */
-export class Meta  {
+ export class Meta  {
     /**
      * Creates a new instance of the FacebookPageMedia repository.
      * @param {string} accessToken - The access token required for authentication.
