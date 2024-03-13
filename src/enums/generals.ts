@@ -5,6 +5,20 @@
  * and some properties are functions that return formatted strings based on input parameters.
  */// enums/general.ts
 
+export enum Resources {
+   meta = "meta",
+   google = "google"
+}
+
+export enum Repositories {
+   auth = "auth"
+}
+
+export enum Actions {
+   generateAuthUrl = "generateAuthUrl",
+   generateToken = "generateToken"
+}
+
 export enum TextMessages {
    MISSING_ACCESS_TOKEN = "Access token is missing. Please provide a valid access token.",
    INVALID_ACCESS_TOKEN = "Invalid or expired access token. Please check your authentication.",
