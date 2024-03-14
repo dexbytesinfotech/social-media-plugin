@@ -1,52 +1,34 @@
-# @dexbytes/social-media-plugin
-# Google-Meta-Integration
+This npm package is designed to simplify the process of fetching data from various platforms such as YouTube, Facebook, and Instagram. Leveraging access tokens, developers can seamlessly integrate this package into their projects to access platform data securely and efficiently. Additionally, the package facilitates the generation of access tokens, streamlining the setup process for users.
 
-## Overview
+### Getting Started
 
-## Google Platform
+Before using this package, developers must obtain developer accounts on the desired platforms. This involves registering as a developer and acquiring necessary credentials, including API keys and secrets. These credentials serve as the foundation for accessing platform data securely.
 
-### Classes
+### Setup
 
-1. **Google**
-   - `Youtube(accessToken: string): IYoutubeRepository`: Factory method to create a new instance of the Youtube repository. It initializes a Youtube object with the provided access token.
-   - `AccessToken(clientId: string, clientSecret: string, redirectUri: string): GoogleTokenGenerator`: Factory method to create a new instance of GoogleTokenGenerator. It encapsulates the creation logic for easy instantiation.
-   - `AuthUrlGenerator(clientId: string, redirectUri: string, scope: string): GoogleAuthUrlGenerator`: Factory method to create a new instance of GoogleAuthUrlGenerator. It encapsulates the creation logic for easy instantiation.
+1. **Installation**: Install the package using npm or yarn:
+   ```
+   npm install @dexbytes/social-media-plugin
+   ```
+   or
+   ```
+   yarn add @dexbytes/social-media-plugin
+   ```
 
-### Modules
+2. **Generating Access Tokens**: Utilize the provided functionality to generate access tokens for the target platforms. This step is crucial for authenticating requests and accessing platform data.
 
-- `youtube.ChannelDetails`: Contains the `Youtube` class, implementing the `IYoutubeRepository` interface.
+3. **Configuration**: Set up the package by providing the obtained developer credentials for each platform. This ensures that the package can authenticate requests and access the desired data seamlessly.
 
-- `common`: Contains utility classes (`GoogleAuthUrlGenerator` and `GoogleTokenGenerator`) for generating authentication URLs and handling access tokens.
+### Usage
 
-## Meta Platform
+Once the package is installed and configured, developers can start leveraging its capabilities to access data from supported platforms. This involves making API requests using the provided methods and handling the retrieved data accordingly within their applications.
 
-### Classes
+For support or inquiries regarding this package, feel free to reach out to the maintainers. Contributions are also welcome, and developers are encouraged to submit pull requests or report any issues encountered during usage.
 
-2. **Meta**
-   - `FacebookPageMedia(accessToken: string): IFacebookPageMediaRepository`: Factory method to create a new instance of the FacebookPageMedia repository.
-   - `FacebookPageDetails(accessToken: string): IFacebookPageDetailsRepository`: Factory method to create a new instance of the FacebookPageDetails repository.
-   - `InstagramAccountDetails(accessToken: string): IInstagramAccountDetailsRepository`: Factory method to create a new instance of the InstagramAccountDetails repository.
-   - `InstagramAccountMedia(accessToken: string): IInstagramAccountMediaRepository`: Factory method to create a new instance of the InstagramAccountMedia repository.
-   - `GenerateMetaAuthUrl(clientId:string,redirectUri:string, permissions:string[]): GenerateMetaAuthUrl`: Factory method to create a new instance of the GenerateMetaAuthUrl class for generating the OAuth URL.
-   - `createMetaLongLivedAccessToken(clientId: string, clientSecret: string, exchangeToken: string): MetaLongLivedAccessToken`: Factory method to create a new instance of the MetaLongLivedAccessToken class for obtaining a long-lived access token.
+### License
 
-### Modules
-
-- `facebook`: Contains `FacebookPageDetails` and `FacebookPageMedia` classes.
-- `instagram`: Contains `InstagramAccountDetails` and `InstagramAccountMedia` classes.
-- `common`: Contains utility classes (`GenerateMetaAuthUrl` and `MetaLongLivedAccessToken`) for generating OAuth URLs and handling access tokens.
-
-## Getting Started
-
-1. Clone the repository.
-2. Install dependencies using `npm install`.
-3. Use the provided factory methods to create instances of the desired repositories and utility classes.
-
-Feel free to explore and customize the code as needed for your application's integration with Google and Meta platforms. If you encounter any issues or have questions, please refer to the documentation for each platform's API and the code comments for additional guidance.
-
-## Contributing
+This package is licensed under the [MIT License](https://opensource.org/licenses/MIT), granting developers the freedom to use, modify, and distribute the software within their projects.
 
 
-## License
 
-This code is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute it in accordance with the terms specified in the license.
+By incorporating this npm package into your projects, accessing data from platforms like YouTube, Facebook, and Instagram becomes more accessible and streamlined. Whether you're a seasoned developer or just getting started, this package simplifies the integration process and enhances the functionality of your applications.

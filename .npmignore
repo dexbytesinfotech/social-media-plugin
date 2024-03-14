@@ -1,5 +1,13 @@
 # .npmignore
-__tests__
+.vscode/
+test-results/
+jest.config.js
+.babelrc
+tsconfig.json
+
+# Ignore source files and folders
 src/
 test/
-tsconfig.json
+
+# Ignore node_modules
+node_modules/

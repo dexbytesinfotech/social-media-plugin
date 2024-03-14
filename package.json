@@ -2,16 +2,16 @@
   "name": "@dexbytes/social-media-plugin",
   "version": "1.0.0",
   "description": "This is a package dealing with various social media APIs",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "nodemon dist/src/index.js",
     "prepare": "npm run build",
     "test": "jest"
   },
   "author": "Dexbytes Infotech",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [
     "social media",
     "Meta",
