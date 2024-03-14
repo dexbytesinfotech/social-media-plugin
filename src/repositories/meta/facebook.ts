@@ -1,76 +1,89 @@
-import { InstagramAccountDetails } from "../../resources/meta/instagram/instagram.Details";
-import { InstagramAccountMedia } from "../../resources/meta/instagram/instagram.Media";
+// Importing necessary modules
+import { UserIdFetcher } from "../../resources/meta/common/getUserIds";
+import { FacebookPageMedia } from "../../resources/meta/facebook/facebookPage.Media";
 
-/**
- * Instagram class provides methods for interacting with Instagram account data.
- */
-class Instagram {
+// Define a class named Facebook
+class Facebook {
+    // Private property to store payload data
     private payload: any;
 
-    /**
-     * Constructor for Instagram class.
-     * @param payload Object containing necessary information for Instagram operations.
-     */
+    // Constructor to initialize the payload
     constructor(payload: any) {
         this.payload = payload;
     }
-
-    /**
-     * Method to fetch details of an Instagram account.
-     * @returns Promise resolving to account details.
-     */
-    async instagramDetails() {
-        // Extracting userId, params, and accessToken from payload
-        const { userId, params, accessToken } = this.payload;
-        // Creating an instance of InstagramAccountDetails with access token
-        const details = new InstagramAccountDetails(accessToken);
-        // Fetching account details using userId and additional parameters
-        const detailsResponse = await details.fetchAccountDetails(userId, params);
-        return detailsResponse;
+   
+    // Method to fetch Facebook Page ID using provided access token
+    async facebookPageId() {
+        // Destructuring access token from payload
+        const { accessToken } = this.payload;
+        // Creating an instance of UserIdFetcher with the provided access token
+        const userId = new UserIdFetcher(accessToken);
+        // Calling fetchFacebookPageId method from UserIdFetcher instance to get the Page ID
+        const id = await userId.fetchFacebookPageId();
+        // Returning the fetched Page ID
+        return id;
     }
 
-    /**
-     * Method to fetch media from an Instagram account.
-     * @returns Promise resolving to account media.
-     */
-    async instagramMedia() {
-        // Extracting userId, params, and accessToken from payload
-        const { userId, params, accessToken } = this.payload;
-        // Creating an instance of InstagramAccountMedia with access token
-        const media = new InstagramAccountMedia(accessToken);
-        // Fetching account media using userId and additional parameters
-        const mediaResponse = media.fetchAccountMedia(userId, params);
-        return mediaResponse;
+    // Method to fetch events from a Facebook Page
+    async facebookEvents() {
+        // Destructuring pageId, accessToken, and params from payload
+        const { pageId, accessToken, params } = this.payload;
+        // Creating an instance of FacebookPageMedia with the provided access token
+        const mediaData = new FacebookPageMedia(accessToken);
+        // Calling fetchPageEvents method from FacebookPageMedia instance to get the events
+        const events = await mediaData.fetchPageEvents(pageId, params);
+        // Returning the fetched events
+        return events;
     }
 
-    /**
-     * Method to fetch stories from an Instagram account.
-     * @returns Promise resolving to account stories.
-     */
-    async instagramStories() {
-        // Extracting userId, params, and accessToken from payload
-        const { userId, params, accessToken } = this.payload;
-        // Creating an instance of InstagramAccountMedia with access token
-        const media = new InstagramAccountMedia(accessToken);
-        // Fetching account stories using userId and additional parameters
-        const stories = media.fetchAccountStories(userId, params);
-        return stories;
+    // Method to fetch posts from a Facebook Page
+    async facebookPosts() {
+        // Destructuring pageId, accessToken, and params from payload
+        const { pageId, accessToken, params } = this.payload;
+        // Creating an instance of FacebookPageMedia with the provided access token
+        const mediaData = new FacebookPageMedia(accessToken);
+        // Calling fetchPagePosts method from FacebookPageMedia instance to get the posts
+        const posts = await mediaData.fetchPagePosts(pageId, params);
+        // Returning the fetched posts
+        return posts;
     }
 
-    /**
-     * Method to fetch live media from an Instagram account.
-     * @returns Promise resolving to account live media.
-     */
-    async instagramLiveMedia() {
-        // Extracting userId, params, and accessToken from payload
-        const { userId, params, accessToken } = this.payload;
-        // Creating an instance of InstagramAccountMedia with access token
-        const media = new InstagramAccountMedia(accessToken);
-        // Fetching account live media using userId and additional parameters
-        const liveMedia = media.fetchAccountLiveMedia(userId, params);
-        return liveMedia;
+    // Method to fetch photos from a Facebook Page
+    async facebookPhotos() {
+        // Destructuring pageId, accessToken, and params from payload
+        const { pageId, accessToken, params } = this.payload;
+        // Creating an instance of FacebookPageMedia with the provided access token
+        const mediaData = new FacebookPageMedia(accessToken);
+        // Calling fetchPagePhotos method from FacebookPageMedia instance to get the photos
+        const photos = await mediaData.fetchPagePhotos(pageId, params);
+        // Returning the fetched photos
+        return photos;
+    }
+    
+    // Method to fetch feeds from a Facebook Page
+    async facebookFeeds() {
+        // Destructuring pageId, accessToken, and params from payload
+        const { pageId, accessToken, params } = this.payload;
+        // Creating an instance of FacebookPageMedia with the provided access token
+        const mediaData = new FacebookPageMedia(accessToken);
+        // Calling fetchPageFeeds method from FacebookPageMedia instance to get the feeds
+        const feeds = await mediaData.fetchPageFeeds(pageId, params);
+        // Returning the fetched feeds
+        return feeds;
+    }
+
+    // Method to fetch videos from a Facebook Page
+    async facebookVideos() {
+        // Destructuring pageId, accessToken, and params from payload
+        const { pageId, accessToken, params } = this.payload;
+        // Creating an instance of FacebookPageMedia with the provided access token
+        const mediaData = new FacebookPageMedia(accessToken);
+        // Calling fetchPageVideos method from FacebookPageMedia instance to get the videos
+        const videos = await mediaData.fetchPageVideos(pageId, params);
+        // Returning the fetched videos
+        return videos;
     }
 }
 
-// Exporting Instagram class as Repository
-export { Instagram as Repository };
+// Exporting Facebook class as Repository
+export { Facebook as Repository };

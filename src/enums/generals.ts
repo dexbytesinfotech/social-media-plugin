@@ -36,7 +36,7 @@ export enum Actions {
    channelPlaylists="channelPlaylists",
    channelPlaylistItems="channelPlaylistItems",
    channelSections="channelSections",
-   languages=" languages",
+   languages="languages",
    regions="regions",
    channelVideos="channelVideos",
    channelVideoDetails="channelVideoDetails",

@@ -14,32 +14,32 @@ import { SMPFactory } from '../../../src/index'
 import { Actions, Repositories, Resources } from '../../../src/enums/generals';
 
 // Mocking the external dependency to avoid actual API calls during tests
-jest.mock('../../../src/resources/google/youtube/youtube.ChannelDetails', () => {
-  return {
-    Youtube: jest.fn().mockImplementation(() => {
-      return {
-        // Mocking various methods of the Youtube class
-        fetchChannelDetails: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelVideos: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelSubscriptions: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelVideosDetails: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelPlaylists: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelPlaylistItems: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelSections: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchLanguages: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchRegions: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchChannelActivities: jest.fn().mockResolvedValue({}), // Returns an empty object
-        fetchVideosCaption: jest.fn().mockResolvedValue({}), // Returns an empty object
-      };
-    }),
-  };
-});
+// jest.mock('../../../src/resources/google/youtube/youtube.ChannelDetails', () => {
+//   return {
+//     Youtube: jest.fn().mockImplementation(() => {
+//       return {
+//         // Mocking various methods of the Youtube class
+//         fetchChannelDetails: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelVideos: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelSubscriptions: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelVideosDetails: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelPlaylists: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelPlaylistItems: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelSections: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchLanguages: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchRegions: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchChannelActivities: jest.fn().mockResolvedValue({}), // Returns an empty object
+//         fetchVideosCaption: jest.fn().mockResolvedValue({}), // Returns an empty object
+//       };
+//     }),
+//   };
+// });
 
 describe("get youtube channel details ", () => {
   let factory: SMPFactory;
   const channelId="oeivdjnhocqwddfklvADDFV"
   const accessesToken="kvnckvdfvndkcnxxncxkcvnkvnc"
-  const params:YoutubeChannelDetailsParams={id:true}
+  const params:YoutubeChannelDetailsParams={id:true,auditDetails:true,statistics:true}
 
 
   beforeEach(() => {

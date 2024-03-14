@@ -1,119 +1,79 @@
 import { Youtube } from "../../resources/google/youtube/youtube.ChannelDetails";
-
-/**
- * YoutubeRepo class provides methods for interacting with YouTube channel data.
- */
-class YoutubeRepo {
-    private payload: any;
-
-    /**
-     * Constructor for YoutubeRepo class.
-     * @param payload Object containing necessary information for channel operations.
-     */
-    constructor(payload: any) {
-        this.payload = payload;
+class YoutubeRepo{
+    private payload:any;
+    constructor(payload:any){
+        this.payload=payload;
     }
 
-    /**
-     * Method to fetch details of a YouTube channel.
-     * @returns Promise resolving to channel details.
-     */
-    async channelDetails() {
-        const { accessesToken, params } = this.payload;
+    async channelDetails(){
+        const{accessesToken,params}= this.payload;
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelDetails(params);
+        const channelDetails = channel.fetchChannelDetails(params);
+        return channelDetails;
     }
 
-    /**
-     * Method to fetch subscriptions of a YouTube channel.
-     * @returns Promise resolving to channel subscriptions.
-     */
-    async channelSubscriptions() {
-        const { channelId, accessesToken, params } = this.payload;
+    async channelSubscriptions(){
+        const{channelId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelSubscriptions(channelId, params);
+        const subscriptions = channel.fetchChannelSubscriptions(channelId,params);
+        return subscriptions
     }
 
-    /**
-     * Method to fetch playlists of a YouTube channel.
-     * @returns Promise resolving to channel playlists.
-     */
-    async channelPlaylists() {
-        const { channelId, accessesToken, params } = this.payload;
+    async channelPlaylists(){
+        const{channelId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelPlaylists(channelId, params);
+        const playlists = channel.fetchChannelPlaylists(channelId,params);
+        return playlists
+    }
+    async channelPlaylistItems(){
+        const{playlistId,accessesToken,params}=this.payload
+        const channel = new Youtube(accessesToken);
+        const playlistsItems = channel.fetchChannelPlaylistItems(playlistId,params);
+        return playlistsItems
     }
 
-    /**
-     * Method to fetch playlist items of a YouTube channel.
-     * @returns Promise resolving to playlist items.
-     */
-    async channelPlaylistItems() {
-        const { playlistId, accessesToken, params } = this.payload;
+    async channelSections(){
+        const{channelId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelPlaylistItems(playlistId, params);
+        const sections = channel.fetchChannelSections(channelId,params);
+        return sections
     }
 
-    /**
-     * Method to fetch sections of a YouTube channel.
-     * @returns Promise resolving to channel sections.
-     */
-    async channelSections() {
-        const { channelId, accessesToken, params } = this.payload;
+    async languages(){
+        const{accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelSections(channelId, params);
+        const languages = channel.fetchLanguages(params);
+        return languages
     }
 
-    /**
-     * Method to fetch languages supported by YouTube.
-     * @returns Promise resolving to supported languages.
-     */
-    async languages() {
-        const { accessesToken, params } = this.payload;
+    async regions(){
+        const{accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchLanguages(params);
+        const regions = channel.fetchRegions(params);
+        return regions
     }
 
-    /**
-     * Method to fetch regions supported by YouTube.
-     * @returns Promise resolving to supported regions.
-     */
-    async regions() {
-        const { accessesToken, params } = this.payload;
+    async channelVideos(){
+        const{channelId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchRegions(params);
+        const videos=channel.fetchChannelVideos(channelId,params);
+        return videos
     }
 
-    /**
-     * Method to fetch videos of a YouTube channel.
-     * @returns Promise resolving to channel videos.
-     */
-    async channelVideos() {
-        const { channelId, accessesToken, params } = this.payload;
+    async channelVideoDetails(){
+        const{videoId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelVideos(channelId, params);
-    }
-
-    /**
-     * Method to fetch details of a specific video.
-     * @returns Promise resolving to video details.
-     */
-    async channelVideoDetails() {
-        const { videoId, accessesToken, params } = this.payload;
-        const channel = new Youtube(accessesToken);
-        return channel.fetchChannelVideosDetails(videoId, params);
+        const videoDetails = channel.fetchChannelVideosDetails(videoId,params)
+        return videoDetails
     }
     
-    /**
-     * Method to fetch activities of a YouTube channel.
-     * @returns Promise resolving to channel activities.
-     */
-    async channelActivities() {
-        const { channelId, accessesToken, params } = this.payload;
+    async channelActivities(){
+        const{channelId,accessesToken,params}=this.payload
         const channel = new Youtube(accessesToken);
-        return channel.fetchChannelActivities(channelId, params);
+        const activites = channel.fetchChannelActivities(channelId,params)
+        return activites
     }
+
 }
 
-// Exporting YoutubeRepo class as Repository
 export { YoutubeRepo as Repository };
