@@ -5,7 +5,7 @@ export const MetaParams = {
   */
   facebookPageId: "accounts{id,name}", // Retrieve the ID and name of connected Facebook pages
   connectedInstagramAccount: "connected_instagram_account", // Retrieve connected Instagram account details
-  facebookPageBasics: "id,name", // Retrieve basic details of a Facebook page (ID and name)
+  facebookPageBasics: "id,name,followers_count,about,phone,category,fan_count,link,emails,connected_instagram_account", // Retrieve basic details of a Facebook page (ID and name)
   followersCount: "followers_count", // Retrieve the count of followers for a Facebook page
   about: "about", // Retrieve the about information of a Facebook page
   bio: "bio", // Retrieve the bio information of a Facebook page

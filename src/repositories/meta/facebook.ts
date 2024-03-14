@@ -1,5 +1,6 @@
 // Importing necessary modules
 import { UserIdFetcher } from "../../resources/meta/common/getUserIds";
+import { FacebookPageDetails } from "../../resources/meta/facebook/facebookPage.Detailes";
 import { FacebookPageMedia } from "../../resources/meta/facebook/facebookPage.Media";
 
 // Define a class named Facebook
@@ -11,7 +12,31 @@ class Facebook {
     constructor(payload: any) {
         this.payload = payload;
     }
-   
+
+    // Method to fetch basic details of a Facebook Page
+    async facebookPageDetails() {
+        // Destructuring pageId and accessToken from payload
+        const { pageId, accessToken } = this.payload;
+        // Creating an instance of FacebookPageDetails with the provided access token
+        const details = new FacebookPageDetails(accessToken);
+        // Calling fetchPageBasicDetails method from FacebookPageDetails instance to get basic details
+        const basicDetails = details.fetchPageBasicDetails(pageId);
+        // Returning the fetched basic details
+        return basicDetails;
+    }
+
+    // Method to fetch access token of a Facebook Page
+    async facebookPageToken() {
+        // Destructuring pageId and accessToken from payload
+        const { pageId, accessToken } = this.payload;
+        // Creating an instance of FacebookPageDetails with the provided access token
+        const details = new FacebookPageDetails(accessToken);
+        // Calling fetchPageAccessToken method from FacebookPageDetails instance to get the access token
+        const pageAccessToken = details.fetchPageAccessToken(pageId);
+        // Returning the fetched access token
+        return pageAccessToken;
+    }
+
     // Method to fetch Facebook Page ID using provided access token
     async facebookPageId() {
         // Destructuring access token from payload

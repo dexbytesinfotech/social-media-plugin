@@ -41,7 +41,10 @@ export enum Actions {
    channelVideos="channelVideos",
    channelVideoDetails="channelVideoDetails",
    channelActivities="channelActivities",
-   refreshAccessToken="refreshAccessToken"
+   refreshAccessToken="refreshAccessToken",
+   facebookPageDetails="facebookPageDetails",
+   facebookPageToken="facebookPageToken",
+
 
 }
 
