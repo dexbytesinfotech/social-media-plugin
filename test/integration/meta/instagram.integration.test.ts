@@ -1,16 +1,17 @@
-// Import necessary modules and classes
-import { InstagramBasicDetailsParams, InstagramMediaParams } from '../../../src/resources/meta/common/interfaces';
-import { InstagramAccountDetails } from '../../../src/resources/meta/instagram/instagram.Details';
-import { InstagramAccountMedia } from '../../../src/resources/meta/instagram/instagram.Media';
+// instagram_integration.test.ts
 
-// Mocking the InstagramAccount.Media and InstagramAccount.Details classes
+import { SMPFactory } from '../../../src/index';
+import { Actions, Repositories, Resources } from '../../../src/enums/generals';
+import { InstagramBasicDetailsParams, InstagramMediaParams } from '../../../src/resources/meta/common/interfaces';
+
+// Mock Instagram classes to avoid actual API calls during tests
 jest.mock('../../../src/resources/meta/instagram/instagram.Media', () => {
     return {
         InstagramAccountMedia: jest.fn().mockImplementation(() => {
             return {
-                fetchAccountMedia: jest.fn().mockResolvedValue({ media: [] }),
-                fetchAccountStories: jest.fn().mockResolvedValue({ stories: [] }),
-                fetchAccountLiveMedia: jest.fn().mockResolvedValue({ liveMedia: [] }),
+                fetchAccountMedia: jest.fn().mockResolvedValue({}),
+                fetchAccountStories: jest.fn().mockResolvedValue({}),
+                fetchAccountLiveMedia: jest.fn().mockResolvedValue({}),
             };
         }),
     };
@@ -20,88 +21,112 @@ jest.mock('../../../src/resources/meta/instagram/instagram.Details', () => {
     return {
         InstagramAccountDetails: jest.fn().mockImplementation(() => {
             return {
-                fetchAccountDetails: jest.fn().mockResolvedValue({ details: {} }),
+                fetchAccountDetails: jest.fn().mockResolvedValue({}),
             };
         }),
     };
 });
 
-// Describing the integration test suite
-describe('Instagram Account Integration', () => {
-    let instagramAccountMedia: InstagramAccountMedia;
-    let instagramAccountDetails: InstagramAccountDetails;
-    const mockUserAccessToken = "abcfhnFHVD4jhvndfvdfnkvdfcsxs2344kvckvfkvvcvkc";
+describe('Integration Tests for Instagram', () => {
+    describe('Instagram Account Details Operation', () => {
+        let factory: SMPFactory;
+        const userId = 'mockUserId';
+        const params: InstagramBasicDetailsParams = { biography: true };
+        const accessToken = 'mockAccessToken';
 
-    // Initializing the instances before each test
-    beforeEach(() => {
-        instagramAccountMedia = new InstagramAccountMedia(mockUserAccessToken);
-        instagramAccountDetails = new InstagramAccountDetails(mockUserAccessToken);
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.meta,
+                module: Repositories.instagram,
+                action: Actions.instagramDetails,
+                payload: {
+                    userId,
+                    params,
+                    accessToken
+                }
+            });
+        });
+
+        it('Should execute Instagram account details operation successfully', async () => {
+            try {
+                const details = await factory.operate();
+                expect(details).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                fail(error);
+            }
+        });
     });
 
-    // Integration test to verify fetching media and then fetching details of the same account
-    it('should successfully fetch media and then fetch details of the same account', async () => {
-        // Mocking user ID for the test
-        const mockUserId = "1234567689101112";
-        const mediaParam: InstagramMediaParams = { igId: true, limit: 10, likeCount: true };
-        const detailsParam: InstagramBasicDetailsParams = { followersCount: true, followsCount: true, mediaCount: true, biography: true, profilePicture: true, website: true };
-        try {
-            // Fetch media using InstagramAccountMedia
-            const media = await instagramAccountMedia.fetchAccountMedia(mockUserId,mediaParam);
-            expect(media).toBeInstanceOf(Object);
+    describe('Instagram Account Media Operations', () => {
+        let factory: SMPFactory;
+        const userId = 'mockuserId';
+        const accessToken = 'mockAccessToken';
 
-            // Fetch details using InstagramAccountDetails
-            const details = await instagramAccountDetails.fetchAccountDetails(mockUserId,detailsParam);
-            expect(details).toBeInstanceOf(Object);
+        it('Should execute Instagram media operation successfully', async () => {
+            const params: InstagramMediaParams = { id: true };
+            factory = new SMPFactory({
+                resource: Resources.meta,
+                module: Repositories.instagram,
+                action: Actions.instagramMedia,
+                payload: {
+                    userId,
+                    params,
+                    accessToken
+                }
+            });
 
-            // Additional assertions can be made here to verify the data fetched
-        } catch (error) {
-            // Handle error if needed
-            
-        }
-    });
+            try {
+                const media = await factory.operate();
+                expect(media).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                fail(error);
+            }
+        });
 
-    // Integration test to verify fetching stories and then fetching details of the same account
-    it('should successfully fetch stories and then fetch details of the same account', async () => {
-        // Mocking user ID for the test
-        const mockUserId = "1234567689101112";
-        const mediaParam: InstagramMediaParams = { igId: true, limit: 10, likeCount: true };
-        const detailsParam: InstagramBasicDetailsParams = { followersCount: true, followsCount: true, mediaCount: true, biography: true, profilePicture: true, website: true };
-        try {
-            // Fetch stories using InstagramAccountMedia
-            const stories = await instagramAccountMedia.fetchAccountStories(mockUserId,mediaParam);
-            expect(stories).toBeInstanceOf(Object);
+        it('Should execute Instagram live media operation successfully', async () => {
+            const params: InstagramMediaParams = { id: true };
+            factory = new SMPFactory({
+                resource: Resources.meta,
+                module: Repositories.instagram,
+                action: Actions.instagramLiveMedia,
+                payload: {
+                    userId,
+                    params,
+                    accessToken
+                }
+            });
 
-            // Fetch details using InstagramAccountDetails
-            const details = await instagramAccountDetails.fetchAccountDetails(mockUserId,detailsParam);
-            expect(details).toBeInstanceOf(Object);
+            try {
+                const liveMedia = await factory.operate();
+                expect(liveMedia).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                fail(error);
+            }
+        });
 
-            // Additional assertions can be made here to verify the data fetched
-        } catch (error) {
-            // Handle error if needed
-            
-        }
-    });
+        it('Should execute Instagram stories operation successfully', async () => {
+            const params: InstagramMediaParams = { id: true };
+            factory = new SMPFactory({
+                resource: Resources.meta,
+                module: Repositories.instagram,
+                action: Actions.instagramStories,
+                payload: {
+                    userId,
+                    params,
+                    accessToken
+                }
+            });
 
-     // Integration test to verify fetching stories and then fetching details of the same account in parallel
-     it('should successfully fetch stories and then fetch details of the same account in parallel', async () => {
-        const mockUserId = "1234567689101112";
-        const mediaParam: InstagramMediaParams = { igId: true, limit: 10, likeCount: true };
-        const detailsParam: InstagramBasicDetailsParams = { followersCount: true, followsCount: true, mediaCount: true, biography: true, profilePicture: true, website: true };
-
-        try {
-            // Fetch stories and details in parallel
-            const [stories, details] = await Promise.all([
-                instagramAccountMedia.fetchAccountStories(mockUserId, mediaParam),
-                instagramAccountDetails.fetchAccountDetails(mockUserId, detailsParam)
-            ]);
-
-            expect(stories).toBeInstanceOf(Object);
-            expect(details).toBeInstanceOf(Object);
-
-            // Additional assertions can be made here to verify the data fetched
-        } catch (error) {
-            // Handle error if needed
-            
-        }
+            try {
+                const stories = await factory.operate();
+                expect(stories).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                fail(error);
+            }
+        });
     });
 });

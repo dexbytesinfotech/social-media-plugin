@@ -115,9 +115,9 @@ export class Youtube implements IYoutubeRepository {
      * @param {YoutubeChannelVideosParams} params - The parameters for fetching videos.
      * @returns {Promise<GoogleResponse>} - A promise that resolves with the fetched videos data.
      */
-    fetchChannelVideos = async (pageId: string, params: YoutubeChannelVideosParams): Promise<GoogleResponse> => {
+    fetchChannelVideos = async (channelId: string, params: YoutubeChannelVideosParams): Promise<GoogleResponse> => {
         const paramIdentifier = GoogleParams.paramIdentifier.search;
-        return this.fetchData<GoogleResponse>(pageId, paramIdentifier, params);
+        return this.fetchData<GoogleResponse>(channelId, paramIdentifier, params);
     }
 
     /**
@@ -137,9 +137,9 @@ export class Youtube implements IYoutubeRepository {
      * @param {YoutubeChannelActivitiesParams} params - The parameters for fetching activities.
      * @returns {Promise<GoogleResponse>} - A promise that resolves with the fetched activities data.
      */
-    fetchChannelActivities = async (paramId: string, params: YoutubeChannelActivitiesParams): Promise<GoogleResponse> => {
+    fetchChannelActivities = async (channelId: string, params: YoutubeChannelActivitiesParams): Promise<GoogleResponse> => {
         const paramIdentifier = GoogleParams.paramIdentifier.activities;
-        return this.fetchData<GoogleResponse>(paramId, paramIdentifier, params);
+        return this.fetchData<GoogleResponse>(channelId, paramIdentifier, params);
     }
 
     /**

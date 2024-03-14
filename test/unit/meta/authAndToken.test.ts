@@ -1,8 +1,3 @@
-// Importing necessary interfaces and classes from the Meta module
-import {
-    MetaLongLivedAccessToken,
-    GenerateMetaAuthUrl,
-} from '../../../src/resources/meta/common/accessTokengenerator';
 
 import { SMPFactory } from '../../../src/index'
 import { Actions, Repositories, Resources } from '../../../src/enums/generals';

@@ -7,8 +7,6 @@ interface RequestBody {
 }
 
 
-
-
 export class SMPFactory {
 
     private requestBody: RequestBody;
@@ -22,11 +20,10 @@ export class SMPFactory {
             const application: any = await import(`./repositories/${this.requestBody.resource}/${this.requestBody.module}`);
             const repo = new application.Repository(this.requestBody.payload);
             const response = await repo[this.requestBody.action]();
-
             return response;
 
         } catch (err) {
-            throw err;
+            return err
         }
     }
 

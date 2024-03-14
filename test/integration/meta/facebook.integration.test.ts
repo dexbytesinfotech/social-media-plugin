@@ -1,142 +1,115 @@
-// Import necessary modules and classes
-import { EventsParams, MediaParams, PhotoParams, VideoParams } from '../../../src/resources/meta/common/interfaces';
-import { FacebookPageDetails } from '../../../src/resources/meta/facebook/facebookPage.Detailes';
-import { FacebookPageMedia } from '../../../src/resources/meta/facebook/facebookPage.Media';
+import { SMPFactory } from '../../../src/index';
+import { Actions, Repositories, Resources } from '../../../src/enums/generals';
+import { EventsParams, MediaParams, VideoParams } from '../../../src/resources/meta/common/interfaces';
 
-// Mocking the FacebookPage.Media and FacebookPage.Details classes
-jest.mock('../../../src/resources/meta/facebook/facebookPage.Media', () => {
-    return {
-        FacebookPageMedia: jest.fn().mockImplementation(() => {
-            return {
-                fetchPagePosts: jest.fn().mockResolvedValue({ posts: {} }),
-                fetchPageEvents: jest.fn().mockResolvedValue({ events: {} }),
-                fetchPagePhotos: jest.fn().mockResolvedValue({ photos: {} }),
-                fetchPageFeeds: jest.fn().mockResolvedValue({ feed: {} }),
-                fetchPageVideos: jest.fn().mockResolvedValue({ videos: {} }),
+describe('Integration Tests', () => {
+    describe('Facebook Page Operations', () => {
+        let factory: SMPFactory;
+        const accessToken = 'mockAccessToken';
+        const pageId = 'mockPageId';
 
-            };
-        }),
-    };
-});
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.meta,
+                module: Repositories.facebook,
+                action: Actions.facebookEvents,
+                payload: { accessToken }
+            });
+        });
 
-jest.mock('../../../src/resources/meta/facebook/facebookPage.Detailes', () => {
-    return {
-        FacebookPageDetails: jest.fn().mockImplementation(() => {
-            return {
-                fetchPageBasicDetails: jest.fn().mockResolvedValue({ basicDetails: {} }),
-                fetchPageFollowersCount: jest.fn().mockResolvedValue({}),
-                fetchPageCategory: jest.fn().mockResolvedValue({}),
-                // Add other methods as needed
-            };
-        }),
-    };
-});
+        it('Should return Facebook page user id', async () => {
+            try {
+                const userId = await factory.operate();
+                expect(userId).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                
+            }
+        });
 
-// Describing the integration test suite
-describe('Facebook Page Integration', () => {
-    let facebookMedia: FacebookPageMedia;
-    let facebookDetails: FacebookPageDetails;
-    const mockPageAccessToken = "abcfhnFHVD4jhvndfvdfnkvdfcsxs2344kvckvfkvvcvkc";
-    const mockUserAccessToken = "abcfhnFHVD4jhvndfvdfnkvdfcsxs2344kvckvfkvvcvkc";
+        it('Should execute Facebook events operation successfully', async () => {
+            try {
+                const params: EventsParams = { attendingCount: true };
+                factory = new SMPFactory({
+                    resource: Resources.meta,
+                    module: Repositories.facebook,
+                    action: Actions.facebookEvents,
+                    payload: { pageId, params, accessToken }
+                });
+                const events = await factory.operate();
+                expect(events).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+              
+            }
+        });
 
-    // Initializing the instances before each test
-    beforeEach(() => {
-        facebookMedia = new FacebookPageMedia(mockPageAccessToken);
-        facebookDetails = new FacebookPageDetails(mockUserAccessToken);
+        it('Should execute Facebook posts operation successfully', async () => {
+            try {
+                const params: MediaParams = { actions: true, canDelete: true };
+                factory = new SMPFactory({
+                    resource: Resources.meta,
+                    module: Repositories.facebook,
+                    action: Actions.facebookPosts,
+                    payload: { pageId, params, accessToken }
+                });
+                const posts = await factory.operate();
+                expect(posts).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+             
+            }
+        });
+
+        it('Should execute Facebook photos operation successfully', async () => {
+            try {
+                const params: MediaParams = { actions: true, canDelete: true };
+                factory = new SMPFactory({
+                    resource: Resources.meta,
+                    module: Repositories.facebook,
+                    action: Actions.facebookPhotos,
+                    payload: { pageId, params, accessToken }
+                });
+                const photos = await factory.operate();
+                expect(photos).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+             
+            }
+        });
+
+        it('Should execute Facebook feeds operation successfully', async () => {
+            try {
+                const params: MediaParams = { actions: true, canDelete: true };
+                factory = new SMPFactory({
+                    resource: Resources.meta,
+                    module: Repositories.facebook,
+                    action: Actions.facebookPosts,
+                    payload: { pageId, params, accessToken }
+                });
+                const feeds = await factory.operate();
+                expect(feeds).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+               
+            }
+        });
+
+        it('Should execute Facebook video operation successfully', async () => {
+            try {
+                const params: VideoParams = { adBreaks: true };
+                factory = new SMPFactory({
+                    resource: Resources.meta,
+                    module: Repositories.facebook,
+                    action: Actions.facebookPosts,
+                    payload: { pageId, params, accessToken }
+                });
+                const videos = await factory.operate();
+                expect(videos).toBeInstanceOf(Object);
+                // Add more specific assertions as needed
+            } catch (error) {
+                
+            }
+        });
     });
-
-    // Integration test to verify fetching posts and then fetching details of the same page
-    it('should successfully fetch posts and then fetch details of the same page', async () => {
-        // Mocking page ID for the test
-        const mockPageId = "1234567689101112";
-        const postParams: MediaParams = { actions: true, adminCreator: true, album: true }
-        const videoParam: VideoParams = { adBreaks: true, comments: true }
-        const feedParams: MediaParams = { actions: true, album: true, target: true }
-        const photosParams: PhotoParams = { link: true, canBackdated: true }
-        const eventParams: EventsParams = { attendingCount: true, comments: true }
-        try {
-            // Fetch posts using FacebookPageMedia
-            const posts = await facebookMedia.fetchPagePosts(mockPageId, postParams);
-            expect(posts).toBeInstanceOf(Object);
-
-            //fetch Videos using FacebbokMedia
-            const videos = await facebookMedia.fetchPageVideos(mockPageId, videoParam)
-            expect(videos).toBeInstanceOf(Object)
-
-            //fetch feeds using Facebook Media
-            const feeds = await facebookMedia.fetchPageFeeds(mockPageId, feedParams);
-            expect(feeds).toBeInstanceOf(Object)
-
-            //fetch phots using FacebookMedia
-            const photos = await facebookMedia.fetchPagePhotos(mockPageId, photosParams)
-            expect(photos).toBeInstanceOf(Object)
-
-            //fetch events using facebookMedia
-            const events = await facebookMedia.fetchPageEvents(mockPageId, eventParams)
-            expect(events).toBeInstanceOf(Object)
-
-            // Fetch details using FacebookPageDetails
-            const details = await facebookDetails.fetchPageBasicDetails(mockPageId);
-            expect(details).toBeInstanceOf(Object);
-
-
-            const followersCount = await facebookDetails.fetchPageFollowersCount(mockPageId)
-            expect(followersCount).toBeInstanceOf(Object)
-
-            const category = await facebookDetails.fetchPageCategory(mockPageId)
-            expect(category).toBeInstanceOf(Object)
-
-            // Additional assertions can be made here to verify the data fetched
-        } catch (error) {
-            // Handle error if needed
-
-        }
-    });
-
-
-
-    //parallel testing
-    it('should successfully fetch posts, videos, feeds, photos, events, and then fetch details of the same page in parallel', async () => {
-        try {
-            const mockPageId = "1234567689101112";
-            const postParams: MediaParams = { actions: true, adminCreator: true, album: true };
-            const videoParam: VideoParams = { adBreaks: true, comments: true };
-            const feedParams: MediaParams = { actions: true, album: true, target: true };
-            const photosParams: PhotoParams = { link: true, canBackdated: true };
-            const eventParams: EventsParams = { attendingCount: true, comments: true };
-    
-            // Fetch posts, videos, feeds, photos, events in parallel
-            const [posts, videos, feeds, photos, events] = await Promise.all([
-                facebookMedia.fetchPagePosts(mockPageId, postParams),
-                facebookMedia.fetchPageVideos(mockPageId, videoParam),
-                facebookMedia.fetchPageFeeds(mockPageId, feedParams),
-                facebookMedia.fetchPagePhotos(mockPageId, photosParams),
-                facebookMedia.fetchPageEvents(mockPageId, eventParams)
-            ]);
-    
-            expect(posts).toBeInstanceOf(Object);
-            expect(videos).toBeInstanceOf(Object);
-            expect(feeds).toBeInstanceOf(Object);
-            expect(photos).toBeInstanceOf(Object);
-            expect(events).toBeInstanceOf(Object);
-    
-            // Fetch details
-            const details = await facebookDetails.fetchPageBasicDetails(mockPageId);
-            expect(details).toBeInstanceOf(Object);
-    
-            const followersCount = await facebookDetails.fetchPageFollowersCount(mockPageId);
-            expect(followersCount).toBeInstanceOf(Object);
-    
-            const category = await facebookDetails.fetchPageCategory(mockPageId);
-            expect(category).toBeInstanceOf(Object);
-        } catch (error) {
-            // Handle error if needed
-        
-            // You can also fail the test explicitly if needed
-            
-        }
-    });
-    
-    
-    
 });

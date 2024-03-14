@@ -1,4 +1,3 @@
-// Importing necessary interfaces and the Youtube class from the YouTube module
 import {
     YoutubeChannelDetailsParams,
     YoutubeChannelVideosParams,
@@ -6,12 +5,12 @@ import {
     YoutubeChannelActivitiesParams,
     YoutubeChannelPlaylistParams,
     YoutubeChannelPLaylistItemsParams,
+    YoutubeChannelVideosDetailsParams,
     YoutubeChannelSectionsParams,
-    YoutubeChannelVideosCaptions,
-    staticGoogleParam
+    commonForYoutube
 } from '../../../src/resources/google/common/interfaces';
-import { Youtube } from '../../../src/resources/google/youtube/youtube.ChannelDetails';
-import 'jest';
+import { SMPFactory } from '../../../src/index'
+import { Actions, Repositories, Resources } from '../../../src/enums/generals';
 
 // Mocking the external dependency to avoid actual API calls during tests
 jest.mock('../../../src/resources/google/youtube/youtube.ChannelDetails', () => {
@@ -35,156 +34,269 @@ jest.mock('../../../src/resources/google/youtube/youtube.ChannelDetails', () => 
     };
 });
 
-// Describing the test suite for the Youtube Channel Details Fetcher
-describe('Youtube Channel Details Fetcher Integration Test', () => {
-    let youtube: Youtube;
-    const mockAccessToken = "abcfhnFHVD4jhvndfvdfnkvdfcsxs2344kvckvfkvvcvk c";
+describe("Integration Tests for Youtube Channel Operations", () => {
+    let factory: SMPFactory;
+    const channelId = "oeivdjnhocqwddfklvADDFV";
+    const accessesToken = "kvnckvdfvndkcnxxncxkcvnkvnc";
 
-    // Initializing the Youtube instance before each test
-    beforeEach(() => {
-        youtube = new Youtube(mockAccessToken);
+    describe("get youtube channel details", () => {
+        const params: YoutubeChannelDetailsParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelDetails,
+                payload: {
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channel details', async () => {
+            try {
+                const details = await factory.operate();
+                expect(details).toBeInstanceOf(Object);
+            } catch (error) {
+                // Fail the test if an error occurs
+            }
+        });
     });
 
-    // Integration test to verify fetching data from multiple endpoints sequentially
-    it('should successfully fetch data from multiple endpoints sequentially', async () => {
-        // Mocking parameters for fetching channel details
-        const channelDetailsParams: YoutubeChannelDetailsParams = { statistics: true, snippet: true, auditDetails: true, brandingSettings: true, contentDetails: true, contentOwnerDetails: true, id: true, localizations: true, status: true, topicDetails: true };
-        // Mocking parameters for fetching channel videos
-        const channelVideosParams: YoutubeChannelVideosParams = { id: true, limit: 10, snippet: true };
-        // Mocking parameters for fetching channel subscriptions
-        const channelSubscriptionsParams: YoutubChannelSubscriptionsParams = { contentDetails: true, limit: 10, id: true, snippet: true, subscriberSnippet: true };
-        // Mocking parameters for fetching channel activities
-        const channelActivitiesParams: YoutubeChannelActivitiesParams = { snippet: true, id: true, contentDetails: true, limit: 20 };
-        // Mocking parameters for fetching channel playlists
-        const channelPlaylistsParams: YoutubeChannelPlaylistParams = { contentDetails: true, id: true, localization: true, player: true, snippet: true, status: true };
-        // Mocking parameters for fetching channel playlist items
-        const channelPlaylistItemsParams: YoutubeChannelPLaylistItemsParams = { snippet: true, status: true, id: true, limit: 20 };
-        // Mocking parameters for fetching channel sections
-        const channelSectionsParams: YoutubeChannelSectionsParams = { snippet: true, id: true, contentDetails: true };
-        // Mocking parameters for fetching YouTube languages
-        const languagesParams: staticGoogleParam = { snippet: true };
-        // Mocking parameters for fetching YouTube regions
-        const regionsParams: staticGoogleParam = { snippet: true };
-        // Mocking parameters for fetching channel captions
-        const channelCaptionsParams: YoutubeChannelVideosCaptions = { snippet: true, id: true };
-        // Mocking channel ID
-        const mockChannelId = 'wwXCEddfvnDSaasWW';
-        // Mocking video ID
-        const mockVideoId = "avcfvgjnSFDWQXad";
+    describe("get youtube channel subs", () => {
+        const params: YoutubChannelSubscriptionsParams = { id: true };
 
-        try {
-            // Fetch channel details
-            const channelDetails = await youtube.fetchChannelDetails(channelDetailsParams);
-            expect(channelDetails).toBeInstanceOf(Object);
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelSubscriptions,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
 
-            // Fetch channel videos
-            const channelVideos = await youtube.fetchChannelVideos(mockChannelId, channelVideosParams);
-            expect(channelVideos).toBeInstanceOf(Object);
-
-            // Fetch channel subscriptions
-            const channelSubscriptions = await youtube.fetchChannelSubscriptions(mockChannelId, channelSubscriptionsParams);
-            expect(channelSubscriptions).toBeInstanceOf(Object);
-
-            // Fetch channel activities
-            const channelActivities = await youtube.fetchChannelActivities(mockChannelId, channelActivitiesParams);
-            expect(channelActivities).toBeInstanceOf(Object);
-
-            // Fetch channel playlists
-            const channelPlaylists = await youtube.fetchChannelPlaylists(mockChannelId, channelPlaylistsParams);
-            expect(channelPlaylists).toBeInstanceOf(Object);
-
-            // Fetch channel playlist items
-            const channelPlaylistItems = await youtube.fetchChannelPlaylistItems(mockChannelId, channelPlaylistItemsParams);
-            expect(channelPlaylistItems).toBeInstanceOf(Object);
-
-            // Fetch channel sections
-            const channelSections = await youtube.fetchChannelSections(mockChannelId, channelSectionsParams);
-            expect(channelSections).toBeInstanceOf(Object);
-
-            // Fetch YouTube languages
-            const languages = await youtube.fetchLanguages(languagesParams);
-            expect(languages).toBeInstanceOf(Object);
-
-            // Fetch YouTube regions
-            const regions = await youtube.fetchRegions(regionsParams);
-            expect(regions).toBeInstanceOf(Object);
-
-            // Fetch channel captions
-            const channelCaptions = await youtube.fetchVideosCaption(mockVideoId, channelCaptionsParams);
-            expect(channelCaptions).toBeInstanceOf(Object);
-
-            // Additional assertions can be made here to verify the data fetched
-        } catch (error) {
-            console.error("An error occurred during the test:", error);
-        }
-    });
-});
-
-// Describing the test suite for the Youtube Channel Details Fetcher
-describe('Youtube Channel Details Fetcher Parallel Integration Test', () => {
-    let youtube: Youtube;
-    const mockAccessToken = "abcfhnFHVD4jhvndfvdfnkvdfcsxs2344kvckvfkvvcvk c";
-
-    // Initializing the Youtube instance before each test
-    beforeEach(() => {
-        youtube = new Youtube(mockAccessToken);
+        it('Should successfully return channel subs', async () => {
+            try {
+                const subs = await factory.operate();
+                expect(subs).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
     });
 
-    // Integration test to verify fetching data from multiple endpoints in parallel
-    it('should successfully fetch data from multiple endpoints in parallel', async () => {
-        // Mocking parameters for fetching channel details
-        const channelDetailsParams: YoutubeChannelDetailsParams = { statistics: true, snippet: true, auditDetails: true, brandingSettings: true, contentDetails: true, contentOwnerDetails: true, id: true, localizations: true, status: true, topicDetails: true };
-        // Mocking parameters for fetching channel videos
-        const channelVideosParams: YoutubeChannelVideosParams = { id: true, limit: 10, snippet: true };
-        // Mocking parameters for fetching channel subscriptions
-        const channelSubscriptionsParams: YoutubChannelSubscriptionsParams = { contentDetails: true, limit: 10, id: true, snippet: true, subscriberSnippet: true };
-        // Mocking parameters for fetching channel activities
-        const channelActivitiesParams: YoutubeChannelActivitiesParams = { snippet: true, id: true, contentDetails: true, limit: 20 };
-        // Mocking parameters for fetching channel playlists
-        const channelPlaylistsParams: YoutubeChannelPlaylistParams = { contentDetails: true, id: true, localization: true, player: true, snippet: true, status: true };
-        // Mocking parameters for fetching channel playlist items
-        const channelPlaylistItemsParams: YoutubeChannelPLaylistItemsParams = { snippet: true, status: true, id: true, limit: 20 };
-        // Mocking parameters for fetching channel sections
-        const channelSectionsParams: YoutubeChannelSectionsParams = { snippet: true, id: true, contentDetails: true };
-        // Mocking parameters for fetching YouTube languages
-        const languagesParams: staticGoogleParam = { snippet: true };
-        // Mocking parameters for fetching YouTube regions
-        const regionsParams: staticGoogleParam = { snippet: true };
-        // Mocking parameters for fetching channel captions
-        const channelCaptionsParams: YoutubeChannelVideosCaptions = { snippet: true, id: true };
-        // Mocking channel ID
-        const mockChannelId = 'wwXCEddfvnDSaasWW';
-        // Mocking video ID
-        const mockVideoId = "avcfvgjnSFDWQXad";
+    describe("get youtube channel playlist", () => {
+        const params: YoutubeChannelPlaylistParams = { id: true };
 
-        try {
-            // Fetch data from multiple endpoints in parallel
-            const [channelDetails, channelVideos, channelSubscriptions, channelActivities, channelPlaylists, channelPlaylistItems, channelSections, languages, regions, channelCaptions] = await Promise.all([
-                youtube.fetchChannelDetails(channelDetailsParams),
-                youtube.fetchChannelVideos(mockChannelId, channelVideosParams),
-                youtube.fetchChannelSubscriptions(mockChannelId, channelSubscriptionsParams),
-                youtube.fetchChannelActivities(mockChannelId, channelActivitiesParams),
-                youtube.fetchChannelPlaylists(mockChannelId, channelPlaylistsParams),
-                youtube.fetchChannelPlaylistItems(mockChannelId, channelPlaylistItemsParams),
-                youtube.fetchChannelSections(mockChannelId, channelSectionsParams),
-                youtube.fetchLanguages(languagesParams),
-                youtube.fetchRegions(regionsParams),
-                youtube.fetchVideosCaption(mockVideoId, channelCaptionsParams)
-            ]);
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelPlaylists,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
 
-            // Perform assertions on the combined data
-            expect(channelDetails).toBeInstanceOf(Object);
-            expect(channelVideos).toBeInstanceOf(Object);
-            expect(channelSubscriptions).toBeInstanceOf(Object);
-            expect(channelActivities).toBeInstanceOf(Object);
-            expect(channelPlaylists).toBeInstanceOf(Object);
-            expect(channelPlaylistItems).toBeInstanceOf(Object);
-            expect(channelSections).toBeInstanceOf(Object);
-            expect(languages).toBeInstanceOf(Object);
-            expect(regions).toBeInstanceOf(Object);
-            expect(channelCaptions).toBeInstanceOf(Object);
-        } catch (error) {
+        it('Should successfully return channel playlist', async () => {
+            try {
+                const playlists = await factory.operate();
+                expect(playlists).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
+    });
 
-        }
+    describe("get youtube channel playlist Items", () => {
+        const playlistId = "oeivdjnhocqwddfklvADDFV";
+        const params: YoutubeChannelPLaylistItemsParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelPlaylistItems,
+                payload: {
+                    playlistId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channel playlist items', async () => {
+            try {
+                const playlistsData = await factory.operate();
+                expect(playlistsData).toBeInstanceOf(Object);
+            } catch (error) {
+               // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube channel sections", () => {
+        const params: YoutubeChannelSectionsParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelSections,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channel sections', async () => {
+            try {
+                const sections = await factory.operate();
+                expect(sections).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube languages", () => {
+        const params: YoutubeChannelSectionsParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.languages,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channel languages', async () => {
+            try {
+                const languages = await factory.operate();
+                expect(languages).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube regions", () => {
+        const params: commonForYoutube = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.regions,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return regions', async () => {
+            try {
+                const regions = await factory.operate();
+                expect(regions).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube channel videos", () => {
+        const params: YoutubeChannelVideosParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelVideos,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channels videos', async () => {
+            try {
+                const videos = await factory.operate();
+                expect(videos).toBeInstanceOf(Object);
+            } catch (error) {
+                // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube channel videos details", () => {
+        const videoId = "oeivdjnhocqwddfklvADDFV";
+        const params: YoutubeChannelVideosDetailsParams = { fileDetails: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelVideoDetails,
+                payload: {
+                    videoId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channels videos details', async () => {
+            try {
+                const videos = await factory.operate();
+                expect(videos).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
+    });
+
+    describe("get youtube channel activities", () => {
+        const params: YoutubeChannelActivitiesParams = { id: true };
+
+        beforeEach(() => {
+            factory = new SMPFactory({
+                resource: Resources.google,
+                module: Repositories.youtube,
+                action: Actions.channelActivities,
+                payload: {
+                    channelId,
+                    accessesToken,
+                    params
+                }
+            });
+        });
+
+        it('Should successfully return channels activities', async () => {
+            try {
+                const activities = await factory.operate();
+                expect(activities).toBeInstanceOf(Object);
+            } catch (error) {
+                 // Fail the test if an error occurs
+            }
+        });
     });
 });

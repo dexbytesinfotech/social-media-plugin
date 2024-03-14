@@ -11,12 +11,38 @@ export enum Resources {
 }
 
 export enum Repositories {
-   auth = "auth"
+   auth = "auth",
+   facebook="facebook",
+   instagram="instagram",
+   youtube="youtube"
+
 }
 
 export enum Actions {
    generateAuthUrl = "generateAuthUrl",
-   generateToken = "generateToken"
+   generateToken = "generateToken",
+   facebookEvents="facebookEvents",
+   facebookPosts="facebookPosts",
+   facebookPhotos="facebookPhotos",
+   facebookFeeds="facebookFeeds",
+   facebookVideos="facebookVideos",
+   facebookPageId="facebookPageId",
+   instagramDetails="instagramDetails",
+   instagramMedia="instagramMedia",
+   instagramStories="instagramStories",
+   instagramLiveMedia="instagramLiveMedia",
+   channelDetails="channelDetails",
+   channelSubscriptions="channelSubscriptions",
+   channelPlaylists="channelPlaylists",
+   channelPlaylistItems="channelPlaylistItems",
+   channelSections="channelSections",
+   languages=" languages",
+   regions="regions",
+   channelVideos="channelVideos",
+   channelVideoDetails="channelVideoDetails",
+   channelActivities="channelActivities",
+   refreshAccessToken="refreshAccessToken"
+
 }
 
 export enum TextMessages {
