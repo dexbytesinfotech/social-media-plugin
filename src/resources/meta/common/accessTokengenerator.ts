@@ -1,11 +1,11 @@
 import { Constants } from '../../../constants';
 import { TextMessages } from '../../../enums/generals';
-import axios, {AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 /**
  * Parameters for the OAuth class.
  */
- export interface OAuthParams {
+export interface OAuthParams {
   clientId: string;
   redirectUri: string;
   permissions: string[];
@@ -30,9 +30,9 @@ export class GenerateMetaAuthUrl {
    * Constructor for the GenerateMetaAuthUrl class.
    * @param {OAuthParams} params - Parameters for the OAuth class.
    */
-  constructor(clientId:string,redirectUri:string, permissions:string []) {
+  constructor(clientId: string, redirectUri: string, permissions: string[]) {
     // Validate required parameters
-    if (!clientId || !redirectUri || !permissions || permissions.length ===  0) {
+    if (!clientId || !redirectUri || !permissions || permissions.length === 0) {
       throw new Error(TextMessages.MISSING_PARAMETERS);
     }
 
@@ -47,7 +47,7 @@ export class GenerateMetaAuthUrl {
    * @param {GenerateAuthUrlParams} params - Parameters for generating the OAuth URL.
    * @returns {string} The OAuth URL.
    */
-  generateAuthUrl(authType:string) {
+  generateAuthUrl(authType: string) {
     // Validate required parameter
     if (!authType) {
       throw new Error(TextMessages.MISSING_PARAMETERS);
@@ -77,71 +77,12 @@ export class GenerateMetaAuthUrl {
 
     // Construct and return the final URL
     return {
-      code:200,
-      statusText:"Ok",
-      url:`${baseAuthUrl}?${urlParams.toString()}`
-    }
+      code: 200,
+      statusText: 'Ok',
+      url: `${baseAuthUrl}?${urlParams.toString()}`,
+    };
   }
 }
 
-/**
- * Response structure for access token requests.
- */
-interface AccessTokenResponse {
-  access_token: string;
-}
 
-/**
- * Class for requesting long-lived access tokens.
- */
-export class MetaLongLivedAccessToken {
-  private clientId: string;
-  private clientSecret: string;
-  private exchangeToken: string;
-  private authType: string = Constants.FACEBOOK_AUTH_TYPE_FOR_LONGLIVE_TOKEN;
 
-  /**
-   * Constructor for the MetaLongLivedAccessToken class.
-   * @param {string} clientId - The client ID.
-   * @param {string} clientSecret - The client secret.
-   * @param {string} exchangeToken - The exchange token.
-   */
-  constructor(clientId: string, clientSecret: string, exchangeToken: string) {
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
-    this.exchangeToken = exchangeToken;
-  }
-
-  /**
-   * Requests a long-lived access token.
-   * @returns {Promise<any>} The response from the API.
-   */
-  async requestLongLivedAccessToken() {
-    const params = new URLSearchParams({
-      grant_type: this.authType,
-      client_id: this.clientId,
-      client_secret: this.clientSecret,
-      fb_exchange_token: this.exchangeToken,
-    });
-
-    try {
-      const response: AxiosResponse<AccessTokenResponse> = await axios.get(Constants.FACEBOOK_OAUTH_LONGLIVEDTOKEN_URL, {
-        params: params,
-      });
-      const { status, statusText, data } = response;
-      const simplifiedResponse: { status: number; statusText: string; data: any } = {
-        status,
-        statusText,
-        data,
-      };
-
-      // Return the data from the API response
-      return simplifiedResponse;
-    } catch (error) {
-      // Handle AxiosError and throw a custom error object
-      if (axios.isAxiosError(error) && error.response) {
-        return {error};
-      }
-    }
-  }
-}

@@ -1,9 +1,10 @@
 # .npmignore
 .vscode/
 test-results/
-jest.config.js
 .babelrc
 tsconfig.json
+tslint.json
+.prettierrc
 
 # Ignore source files and folders
 src/

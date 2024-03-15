@@ -113,6 +113,3 @@ export interface IInstagramAccountMediaRepository {
      */
     fetchAccountLiveMedia(userId: string, params?: InstagramMediaParams): Promise<MetaResponse>;
 }
-
-
-

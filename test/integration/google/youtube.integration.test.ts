@@ -7,7 +7,7 @@ import {
     YoutubeChannelPLaylistItemsParams,
     YoutubeChannelVideosDetailsParams,
     YoutubeChannelSectionsParams,
-    commonForYoutube
+    CommonForYoutube
 } from '../../../src/resources/google/common/interfaces';
 import { SMPFactory } from '../../../src/index'
 import { Actions, Repositories, Resources } from '../../../src/enums/generals';
@@ -196,7 +196,7 @@ describe("Integration Tests for Youtube Channel Operations", () => {
     });
 
     describe("get youtube regions", () => {
-        const params: commonForYoutube = { id: true };
+        const params: CommonForYoutube = { id: true };
 
         beforeEach(() => {
             factory = new SMPFactory({

@@ -1,5 +1,5 @@
 // Importing necessary modules and interfaces
-import { Constants } from "../../../constants";
+import { Constants } from '../../../constants';
 
 /**
  * Class for generating Google OAuth authorization URL.
@@ -41,9 +41,9 @@ export class GoogleAuthUrlGenerator {
 
     // Constructing the complete authorization URL
     return {
-      code:200,
-      statusText:"ok",
-      url:`${Constants.GOOGLE.GOOGLE_AUTH_URL}?${params.toString()}`
+      code: 200,
+      statusText: 'ok',
+      url: `${Constants.GOOGLE.GOOGLE_AUTH_URL}?${params.toString()}`,
     };
   }
 }

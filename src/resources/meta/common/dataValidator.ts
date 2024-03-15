@@ -1,5 +1,5 @@
-import {TextMessages} from '../../../enums/generals';
-import { validateAccessToken, makeApiRequest} from './common.helpers';
+import { TextMessages } from '../../../enums/generals';
+import { validateAccessToken, makeApiRequest } from './common.helpers';
 
 /**
  * Fetch data with access token validation.
@@ -9,38 +9,36 @@ import { validateAccessToken, makeApiRequest} from './common.helpers';
  * @returns Promise containing the fetched data or an error response.
  */
 export async function fetchDataWithValidation<T>(accessToken: string, pageId: string, fields: string): Promise<T> {
-    // Validate the user access token
-    const accessTokenValidationResult = validateAccessToken(accessToken);
+  // Validate the user access token
+  const accessTokenValidationResult = validateAccessToken(accessToken);
 
-    // If there is an issue with the access token, return an error response
-    if (accessTokenValidationResult) {
-        return createErrorResponse<T>(TextMessages.INVALID_ACCESS_TOKEN);
+  // If there is an issue with the access token, return an error response
+  if (accessTokenValidationResult) {
+    return createErrorResponse<T>(TextMessages.INVALID_ACCESS_TOKEN);
+  }
+
+  if (!fields) {
+    return createErrorResponse<T>(TextMessages.NOT_FOUND);
+  }
+  try {
+    // Make the API request and get the response
+    const response = await makeApiRequest<T>(pageId, fields, accessToken);
+
+    // Validate the API response
+    validateApiResponse<T>(response);
+
+    // Check if the response is empty
+    if (!response || (Array.isArray(response) && response.length === 0)) {
+      return response;
     }
 
-    if(!fields){
-        return createErrorResponse<T>(TextMessages.NOT_FOUND)
-    }
-    try {
-        // Make the API request and get the response
-        const response = await makeApiRequest<T>(pageId, fields, accessToken);
-        
-    
-        // Validate the API response
-        validateApiResponse<T>(response);
-    
-        // Check if the response is empty
-        if (!response || (Array.isArray(response) && response.length === 0)) {
-           return response
-        }
-    
-        // Return the validated response
-        return response;
-    } catch (error:any) {
-        // Handle any errors that occurred during the API request or validation
-        // You might want to throw the error or handle it based on your application's needs
-        throw error;
-    }
-    
+    // Return the validated response
+    return response;
+  } catch (error: any) {
+    // Handle any errors that occurred during the API request or validation
+    // You might want to throw the error or handle it based on your application's needs
+    throw error;
+  }
 }
 
 /**
@@ -48,11 +46,11 @@ export async function fetchDataWithValidation<T>(accessToken: string, pageId: st
  * @param message - Error message.
  * @returns Error response object.
  */
- export function createErrorResponse<T>(message: string): T {
-    return {
-        error: true,
-        message,
-    } as T;
+export function createErrorResponse<T>(message: string): T {
+  return {
+    error: true,
+    message,
+  } as T;
 }
 
 /**
@@ -62,12 +60,12 @@ export async function fetchDataWithValidation<T>(accessToken: string, pageId: st
  * @throws Error if the response format is invalid or if requested fields are missing.
  */
 export function validateApiResponse<T>(response: T): void {
-    // Ensure that the response is an object
-    if (!response || typeof response !== 'object') {
-        throw new Error(TextMessages.INVALID_API_RESPONSE_FORMAT);
-    }
-    // Check if the response data is empty
-    if (Object.keys(response).length === 0) {
-        throw createErrorResponse<T>(TextMessages.NOT_FOUND);
-    }
+  // Ensure that the response is an object
+  if (!response || typeof response !== 'object') {
+    throw new Error(TextMessages.INVALID_API_RESPONSE_FORMAT);
+  }
+  // Check if the response data is empty
+  if (Object.keys(response).length === 0) {
+    throw createErrorResponse<T>(TextMessages.NOT_FOUND);
+  }
 }

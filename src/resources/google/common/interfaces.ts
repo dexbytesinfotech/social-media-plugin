@@ -52,7 +52,6 @@ export interface YoutubeChannelVideosParams {
   snippet?: boolean; // Include snippet details.
   limit?: number; // Limit the number of videos.
   id?: boolean; // Include video ID.
-
 }
 
 /**
@@ -123,7 +122,7 @@ export interface YoutubeChannelPLaylistItemsParams {
 /**
  * Common parameters for various YouTube API calls.
  */
-export interface commonForYoutube {
+export interface CommonForYoutube {
   limit?: number; // Common limit for multiple requests.
   subscriberSnippet?: boolean; // Include subscriber snippet details.
   statistics?: boolean; // Include statistics.
@@ -155,6 +154,6 @@ export interface YoutubChannelSubscriptionsParams {
   limit?: number; // Limit the number of subscriptions.
 }
 
-export interface staticGoogleParam{
-  snippet?:boolean
+export interface StaticGoogleParam {
+  snippet?: boolean;
 }

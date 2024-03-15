@@ -8,7 +8,7 @@ import {
   YoutubeChannelPLaylistItemsParams,
   YoutubeChannelVideosDetailsParams,
   YoutubeChannelSectionsParams,
-  commonForYoutube
+  CommonForYoutube
 } from '../../../src/resources/google/common/interfaces';
 import { SMPFactory } from '../../../src/index'
 import { Actions, Repositories, Resources } from '../../../src/enums/generals';
@@ -195,7 +195,7 @@ describe("get youtube regions ", () => {
   let factory: SMPFactory;
   const channelId="oeivdjnhocqwddfklvADDFV"
   const accessesToken="kvnckvdfvndkcnxxncxkcvnkvnc"
-  const params:commonForYoutube={id:true}
+  const params:CommonForYoutube={id:true}
 
 
   beforeEach(() => {
