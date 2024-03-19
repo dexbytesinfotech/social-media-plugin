@@ -1,47 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="46" failures="0" errors="0" time="14.997">
-  <testsuite name="get youtube channel details " errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="10.776" tests="10">
-    <testcase classname="get youtube channel details  Should successfully return channel details" name="get youtube channel details  Should successfully return channel details" time="0.069">
+<testsuites name="jest tests" tests="46" failures="0" errors="0" time="14.434">
+  <testsuite name="returns facebook page posts " errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="10.734" tests="4">
+    <testcase classname="returns facebook page posts  Should execute instagram details operation successfully" name="returns facebook page posts  Should execute instagram details operation successfully" time="0.096">
     </testcase>
-    <testcase classname="get youtube channel subs  Should successfully return channel subs" name="get youtube channel subs  Should successfully return channel subs" time="0.002">
+    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.002">
     </testcase>
-    <testcase classname="get youtube channel playlist  Should successfully return channel playlist" name="get youtube channel playlist  Should successfully return channel playlist" time="0.003">
+    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.002">
     </testcase>
-    <testcase classname="get youtube channel playlist Items  Should successfully return channel playlist items" name="get youtube channel playlist Items  Should successfully return channel playlist items" time="0.002">
-    </testcase>
-    <testcase classname="get youtube channel sections  Should successfully return channel sections" name="get youtube channel sections  Should successfully return channel sections" time="0.002">
-    </testcase>
-    <testcase classname="get youtube languAGES  Should successfully return channel languages" name="get youtube languAGES  Should successfully return channel languages" time="0.002">
-    </testcase>
-    <testcase classname="get youtube regions  Should successfully return regions" name="get youtube regions  Should successfully return regions" time="0.002">
-    </testcase>
-    <testcase classname="get youtube channel videos  Should successfully return channels videos" name="get youtube channel videos  Should successfully return channels videos" time="0.002">
-    </testcase>
-    <testcase classname="get youtube channel videos details  Should successfully return channels videos details" name="get youtube channel videos details  Should successfully return channels videos details" time="0.002">
-    </testcase>
-    <testcase classname="get youtube channel Activities  Should successfully return channels activities" name="get youtube channel Activities  Should successfully return channels activities" time="0.001">
+    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.011">
     </testcase>
   </testsuite>
-  <testsuite name="get auth url for google " errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="10.955" tests="3">
-    <testcase classname="get auth url for google  Should successfully return auth url" name="get auth url for google  Should successfully return auth url" time="0.051">
+  <testsuite name="get auth url for google " errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="10.857" tests="3">
+    <testcase classname="get auth url for google  Should successfully return auth url" name="get auth url for google  Should successfully return auth url" time="0.029">
     </testcase>
-    <testcase classname="get accessToken for google  Should successfully return auth token " name="get accessToken for google  Should successfully return auth token " time="0.002">
+    <testcase classname="get accessToken for google  Should successfully return auth token " name="get accessToken for google  Should successfully return auth token " time="0.005">
     </testcase>
     <testcase classname="get accessToken for google  with help og refresh token  Should successfully return auth token " name="get accessToken for google  with help og refresh token  Should successfully return auth token " time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Integration Tests for Youtube Channel Operations" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:56" time="0.412" tests="10">
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel details Should successfully return channel details" name="Integration Tests for Youtube Channel Operations get youtube channel details Should successfully return channel details" time="0.011">
+  <testsuite name="returns facebook page user id" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="11.041" tests="6">
+    <testcase classname="returns facebook page user id Should return facebook page id successfully " name="returns facebook page user id Should return facebook page id successfully " time="0.338">
+    </testcase>
+    <testcase classname="returns facebook events Should execute Facebook events operation successfully" name="returns facebook events Should execute Facebook events operation successfully" time="0.006">
+    </testcase>
+    <testcase classname="returns facebook page posts  Should execute Facebook posts operation successfully" name="returns facebook page posts  Should execute Facebook posts operation successfully" time="0.003">
+    </testcase>
+    <testcase classname="returns facebook page photos  Should execute Facebook posts operation successfully" name="returns facebook page photos  Should execute Facebook posts operation successfully" time="0.004">
+    </testcase>
+    <testcase classname="returns facebook page Feeds  Should execute Facebook feeds operation successfully" name="returns facebook page Feeds  Should execute Facebook feeds operation successfully" time="0.002">
+    </testcase>
+    <testcase classname="returns facebook page videos  Should execute Facebook video operation successfully" name="returns facebook page videos  Should execute Facebook video operation successfully" time="0.005">
+    </testcase>
+  </testsuite>
+  <testsuite name="Integration Tests for Youtube Channel Operations" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:50" time="0.508" tests="10">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel details Should successfully return channel details" name="Integration Tests for Youtube Channel Operations get youtube channel details Should successfully return channel details" time="0.041">
     </testcase>
     <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel subs Should successfully return channel subs" name="Integration Tests for Youtube Channel Operations get youtube channel subs Should successfully return channel subs" time="0.002">
     </testcase>
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel playlist Should successfully return channel playlist" name="Integration Tests for Youtube Channel Operations get youtube channel playlist Should successfully return channel playlist" time="0.001">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel playlist Should successfully return channel playlist" name="Integration Tests for Youtube Channel Operations get youtube channel playlist Should successfully return channel playlist" time="0.002">
     </testcase>
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel playlist Items Should successfully return channel playlist items" name="Integration Tests for Youtube Channel Operations get youtube channel playlist Items Should successfully return channel playlist items" time="0.016">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel playlist Items Should successfully return channel playlist items" name="Integration Tests for Youtube Channel Operations get youtube channel playlist Items Should successfully return channel playlist items" time="0.006">
     </testcase>
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel sections Should successfully return channel sections" name="Integration Tests for Youtube Channel Operations get youtube channel sections Should successfully return channel sections" time="0.002">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel sections Should successfully return channel sections" name="Integration Tests for Youtube Channel Operations get youtube channel sections Should successfully return channel sections" time="0.003">
     </testcase>
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube languages Should successfully return channel languages" name="Integration Tests for Youtube Channel Operations get youtube languages Should successfully return channel languages" time="0.002">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube languages Should successfully return channel languages" name="Integration Tests for Youtube Channel Operations get youtube languages Should successfully return channel languages" time="0.016">
     </testcase>
     <testcase classname="Integration Tests for Youtube Channel Operations get youtube regions Should successfully return regions" name="Integration Tests for Youtube Channel Operations get youtube regions Should successfully return regions" time="0.002">
     </testcase>
@@ -49,65 +51,63 @@
     </testcase>
     <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel videos details Should successfully return channels videos details" name="Integration Tests for Youtube Channel Operations get youtube channel videos details Should successfully return channels videos details" time="0.002">
     </testcase>
-    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel activities Should successfully return channels activities" name="Integration Tests for Youtube Channel Operations get youtube channel activities Should successfully return channels activities" time="0.005">
+    <testcase classname="Integration Tests for Youtube Channel Operations get youtube channel activities Should successfully return channels activities" name="Integration Tests for Youtube Channel Operations get youtube channel activities Should successfully return channels activities" time="0.003">
     </testcase>
   </testsuite>
-  <testsuite name="returns facebook page posts " errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="11.626" tests="4">
-    <testcase classname="returns facebook page posts  Should execute instagram details operation successfully" name="returns facebook page posts  Should execute instagram details operation successfully" time="0.16">
-    </testcase>
-    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.002">
-    </testcase>
-    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.003">
-    </testcase>
-    <testcase classname="returns instagram Account  Media Should execute instagram details operation successfully" name="returns instagram Account  Media Should execute instagram details operation successfully" time="0.003">
+  <testsuite name="Cross-Platform Integration Tests" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:50" time="0.408" tests="1">
+    <testcase classname="Cross-Platform Integration Tests should successfully fetch data from both Facebook and Instagram together" name="Cross-Platform Integration Tests should successfully fetch data from both Facebook and Instagram together" time="0.008">
     </testcase>
   </testsuite>
-  <testsuite name="Integration Tests for Instagram" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="11.713" tests="4">
-    <testcase classname="Integration Tests for Instagram Instagram Account Details Operation Should execute Instagram account details operation successfully" name="Integration Tests for Instagram Instagram Account Details Operation Should execute Instagram account details operation successfully" time="0.127">
+  <testsuite name="Integration Tests for Instagram" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="11.383" tests="4">
+    <testcase classname="Integration Tests for Instagram Instagram Account Details Operation Should execute Instagram account details operation successfully" name="Integration Tests for Instagram Instagram Account Details Operation Should execute Instagram account details operation successfully" time="0.054">
     </testcase>
     <testcase classname="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram media operation successfully" name="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram media operation successfully" time="0.002">
     </testcase>
-    <testcase classname="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram live media operation successfully" name="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram live media operation successfully" time="0.001">
+    <testcase classname="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram live media operation successfully" name="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram live media operation successfully" time="0.002">
     </testcase>
     <testcase classname="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram stories operation successfully" name="Integration Tests for Instagram Instagram Account Media Operations Should execute Instagram stories operation successfully" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Cross-Platform Integration Tests" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:55" time="1.393" tests="1">
-    <testcase classname="Cross-Platform Integration Tests should successfully fetch data from both Facebook and Instagram together" name="Cross-Platform Integration Tests should successfully fetch data from both Facebook and Instagram together" time="0.005">
+  <testsuite name="Get Meta Auth Url and Long Lived Token" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="11.71" tests="2">
+    <testcase classname="Get Meta Auth Url and Long Lived Token Should successfully return auth url" name="Get Meta Auth Url and Long Lived Token Should successfully return auth url" time="0.18">
+    </testcase>
+    <testcase classname="Should return long lived access token Should return long-lived access token" name="Should return long lived access token Should return long-lived access token" time="0.857">
     </testcase>
   </testsuite>
-  <testsuite name="returns facebook page user id" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="12.496" tests="6">
-    <testcase classname="returns facebook page user id Should return facebook page id successfully " name="returns facebook page user id Should return facebook page id successfully " time="0.679">
+  <testsuite name="Integration Tests" errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="13.347" tests="6">
+    <testcase classname="Integration Tests Facebook Page Operations Should return Facebook page user id" name="Integration Tests Facebook Page Operations Should return Facebook page user id" time="1.271">
     </testcase>
-    <testcase classname="returns facebook events Should execute Facebook events operation successfully" name="returns facebook events Should execute Facebook events operation successfully" time="0.002">
+    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook events operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook events operation successfully" time="0.272">
     </testcase>
-    <testcase classname="returns facebook page posts  Should execute Facebook posts operation successfully" name="returns facebook page posts  Should execute Facebook posts operation successfully" time="0.002">
+    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook posts operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook posts operation successfully" time="0.265">
     </testcase>
-    <testcase classname="returns facebook page photos  Should execute Facebook posts operation successfully" name="returns facebook page photos  Should execute Facebook posts operation successfully" time="0.002">
+    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook photos operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook photos operation successfully" time="0.27">
     </testcase>
-    <testcase classname="returns facebook page Feeds  Should execute Facebook feeds operation successfully" name="returns facebook page Feeds  Should execute Facebook feeds operation successfully" time="0.002">
+    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook feeds operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook feeds operation successfully" time="0.267">
     </testcase>
-    <testcase classname="returns facebook page videos  Should execute Facebook video operation successfully" name="returns facebook page videos  Should execute Facebook video operation successfully" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="Get Meta Auth Url and Long Lived Token" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:45" time="12.962" tests="2">
-    <testcase classname="Get Meta Auth Url and Long Lived Token Should successfully return auth url" name="Get Meta Auth Url and Long Lived Token Should successfully return auth url" time="1.06">
-    </testcase>
-    <testcase classname="Should return long lived access token Should return long-lived access token" name="Should return long lived access token Should return long-lived access token" time="0.506">
+    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook video operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook video operation successfully" time="0.271">
     </testcase>
   </testsuite>
-  <testsuite name="Integration Tests" errors="0" failures="0" skipped="0" timestamp="2024-03-15T07:17:44" time="14.127" tests="6">
-    <testcase classname="Integration Tests Facebook Page Operations Should return Facebook page user id" name="Integration Tests Facebook Page Operations Should return Facebook page user id" time="1.423">
+  <testsuite name="get youtube channel details " errors="0" failures="0" skipped="0" timestamp="2024-03-19T06:46:39" time="13.541" tests="10">
+    <testcase classname="get youtube channel details  Should successfully return channel details" name="get youtube channel details  Should successfully return channel details" time="0.867">
     </testcase>
-    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook events operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook events operation successfully" time="0.162">
+    <testcase classname="get youtube channel subs  Should successfully return channel subs" name="get youtube channel subs  Should successfully return channel subs" time="0.109">
     </testcase>
-    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook posts operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook posts operation successfully" time="0.164">
+    <testcase classname="get youtube channel playlist  Should successfully return channel playlist" name="get youtube channel playlist  Should successfully return channel playlist" time="0.1">
     </testcase>
-    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook photos operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook photos operation successfully" time="0.161">
+    <testcase classname="get youtube channel playlist Items  Should successfully return channel playlist items" name="get youtube channel playlist Items  Should successfully return channel playlist items" time="0.121">
     </testcase>
-    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook feeds operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook feeds operation successfully" time="0.162">
+    <testcase classname="get youtube channel sections  Should successfully return channel sections" name="get youtube channel sections  Should successfully return channel sections" time="0.099">
     </testcase>
-    <testcase classname="Integration Tests Facebook Page Operations Should execute Facebook video operation successfully" name="Integration Tests Facebook Page Operations Should execute Facebook video operation successfully" time="0.161">
+    <testcase classname="get youtube languAGES  Should successfully return channel languages" name="get youtube languAGES  Should successfully return channel languages" time="0.099">
+    </testcase>
+    <testcase classname="get youtube regions  Should successfully return regions" name="get youtube regions  Should successfully return regions" time="0.103">
+    </testcase>
+    <testcase classname="get youtube channel videos  Should successfully return channels videos" name="get youtube channel videos  Should successfully return channels videos" time="0.1">
+    </testcase>
+    <testcase classname="get youtube channel videos details  Should successfully return channels videos details" name="get youtube channel videos details  Should successfully return channels videos details" time="0.098">
+    </testcase>
+    <testcase classname="get youtube channel Activities  Should successfully return channels activities" name="get youtube channel Activities  Should successfully return channels activities" time="0.097">
     </testcase>
   </testsuite>
 </testsuites>

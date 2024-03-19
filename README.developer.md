@@ -2,25 +2,26 @@
 
 ### Introduction
 
-@dexbytes/social-media-plugin is an npm package designed to simplify the process of fetching data from various social media platforms such as YouTube, Facebook, and Instagram. Leveraging access tokens, this package allows users to access platform data securely and efficiently. Additionally, it provides functionality to generate access tokens, streamlining the setup process for developers.
+social-media-plugin is an npm package designed to simplify the process of fetching data from various social media platforms such as YouTube, Facebook, and Instagram. Leveraging access tokens, this package allows users to access platform data securely and efficiently. Additionally, it provides functionality to generate access tokens, streamlining the setup process for developers.
 
 ### Installation
 
-To install @dexbytes/social-media-plugin, use npm or yarn:
+To install social-media-plugin, use npm or yarn:
 
 ```bash
-npm install @dexbytes/social-media-plugin
+npm install social-media-plugin
 ```
 
 or
 
 ```bash
-yarn add @dexbytes/social-media-plugin
+yarn add social-media-plugin
 ```
 
 ### Usage
 
-To utilize @dexbytes/social-media-plugin effectively, follow these steps:
+To utilize social-media-plugin effectively, follow these steps:
+You can also refer to our example repositiory https://github.com/dexbytesinfotech/smp-examples.git
 
 1. **Import Package**:
    ```javascript
@@ -53,7 +54,7 @@ To utilize @dexbytes/social-media-plugin effectively, follow these steps:
 Here's an example demonstrating how to use @dexbytes/social-media-plugin to get a meta auth URL and a long-lived token:
 
 ```javascript
-import { SMPFactory, Actions, Repositories, Resources } from '@dexbytes/social-media-plugin';
+import { SMPFactory, Actions, Repositories, Resources } from 'social-media-plugin';
 
 const factory = new SMPFactory({
     resource: Resources.meta,
@@ -72,7 +73,7 @@ console.log(result);
 
 ### Support and Contributions
 
-For support or inquiries regarding @dexbytes/social-media-plugin, feel free to reach out to the maintainers. Contributions are also welcome, and developers are encouraged to submit pull requests or report any issues encountered during usage.
+For support or inquiries regarding social-media-plugin, feel free to reach out to the maintainers. Contributions are also welcome, and developers are encouraged to submit pull requests or report any issues encountered during usage.
 
 ### License
 
@@ -80,4 +81,4 @@ For support or inquiries regarding @dexbytes/social-media-plugin, feel free to r
 
 ---
 
-With @dexbytes/social-media-plugin, accessing data from social media platforms becomes more accessible and streamlined. By following the instructions provided in this README, developers can integrate the package seamlessly into their projects and leverage its capabilities to enhance functionality and efficiency.
+With social-media-plugin, accessing data from social media platforms becomes more accessible and streamlined. By following the instructions provided in this README, developers can integrate the package seamlessly into their projects and leverage its capabilities to enhance functionality and efficiency.

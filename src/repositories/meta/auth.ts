@@ -26,7 +26,7 @@ class MetaAuth {
     // Creating an instance of GenerateMetaAuthUrl with required parameters
     const authUrl = new GenerateMetaAuthUrl(clientId, redirectUri, permissions);
     // Generating the authorization URL with response type 'code'
-    return authUrl.generateAuthUrl('code');
+    return authUrl.generateAuthUrl('rerequest');
   }
 
   /**

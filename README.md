@@ -4,15 +4,18 @@ This npm package is designed to simplify the process of fetching data from vario
 
 Before using this package, developers must obtain developer accounts on the desired platforms. This involves registering as a developer and acquiring necessary credentials, including API keys and secrets. These credentials serve as the foundation for accessing platform data securely.
 
+To utilize social-media-plugin effectively:
+You can also refer to our example repositiory https://github.com/dexbytesinfotech/smp-examples.git
+
 ### Setup
 
 1. **Installation**: Install the package using npm or yarn:
    ```
-   npm install @dexbytes/social-media-plugin
+   npm install social-media-plugin
    ```
    or
    ```
-   yarn add @dexbytes/social-media-plugin
+   yarn add social-media-plugin
    ```
 
 2. **Generating Access Tokens**: Utilize the provided functionality to generate access tokens for the target platforms. This step is crucial for authenticating requests and accessing platform data.

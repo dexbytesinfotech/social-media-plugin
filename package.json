@@ -1,5 +1,5 @@
 {
-  "name": "@dexbytes/social-media-plugin",
+  "name": "social-media-plugin",
   "version": "1.0.0",
   "description": "This is a package dealing with various social media APIs",
   "main": "lib/index.js",

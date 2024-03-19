@@ -37,7 +37,7 @@ describe('returns facebook page user id', () => {
         factory = new SMPFactory({
             resource: Resources.meta,
             module: Repositories.facebook,
-            action: Actions.facebookEvents,
+            action: Actions.facebookPageDetails,
             payload: {
                 accessToken
             }
