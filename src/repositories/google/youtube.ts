@@ -7,7 +7,6 @@ class YoutubeRepo {
 
   async channelDetails() {
     const { accessToken, params } = this.payload;
-    console.log(accessToken)
     const channel = new Youtube(accessToken);
     const channelDetails = channel.fetchChannelDetails(params);
     return channelDetails;

@@ -56,7 +56,6 @@ describe("get youtube channel details ", () => {
   it('Should successfully return channel details', async () => {
     const details = await factory.operate();
     expect(details).toBeInstanceOf(Object);
-    console.log(details)
   });
 
 })
@@ -110,7 +109,7 @@ describe("get youtube channel playlist ", () => {
     const playlists = await factory.operate();
     expect(playlists).toBeInstanceOf(Object);
   });
-
+``
 })
 
 describe("get youtube channel playlist Items ", () => {
