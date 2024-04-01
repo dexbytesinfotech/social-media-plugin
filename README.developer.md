@@ -6,21 +6,21 @@ social-media-plugin is an npm package designed to simplify the process of fetchi
 
 ### Installation
 
-To install social-media-plugin, use npm or yarn:
+To install @dexbytes/social-media-plugin use npm or yarn:
 
 ```bash
-npm install social-media-plugin
+npm install @dexbytes/social-media-plugin
 ```
 
 or
 
 ```bash
-yarn add social-media-plugin
+yarn add @dexbytes/social-media-plugin
 ```
 
 ### Usage
 
-To utilize social-media-plugin effectively, follow these steps:
+To utilize @dexbytes/social-media-plugin effectively, follow these steps:
 You can also refer to our example repositiory https://github.com/dexbytesinfotech/smp-examples.git
 
 1. **Import Package**:
@@ -73,7 +73,7 @@ console.log(result);
 
 ### Support and Contributions
 
-For support or inquiries regarding social-media-plugin, feel free to reach out to the maintainers. Contributions are also welcome, and developers are encouraged to submit pull requests or report any issues encountered during usage.
+For support or inquiries regarding @dexbytes/social-media-plugin, feel free to reach out to the maintainers. Contributions are also welcome, and developers are encouraged to submit pull requests or report any issues encountered during usage.
 
 ### License
 
@@ -81,4 +81,4 @@ For support or inquiries regarding social-media-plugin, feel free to reach out t
 
 ---
 
-With social-media-plugin, accessing data from social media platforms becomes more accessible and streamlined. By following the instructions provided in this README, developers can integrate the package seamlessly into their projects and leverage its capabilities to enhance functionality and efficiency.
+With @dexbytes/social-media-plugin, accessing data from social media platforms becomes more accessible and streamlined. By following the instructions provided in this README, developers can integrate the package seamlessly into their projects and leverage its capabilities to enhance functionality and efficiency.

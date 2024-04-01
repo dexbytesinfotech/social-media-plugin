@@ -1,7 +1,7 @@
 {
-  "name": "social-media-plugin",
+  "name": "@dexbytes/social-media-plugin",
   "version": "1.0.0",
-  "description": "This is a package dealing with various social media APIs",
+  "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
