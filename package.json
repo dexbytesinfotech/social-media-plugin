@@ -25,13 +25,13 @@
   "author": "Dexbytes Infotech",
   "license": "MIT",
   "keywords": [
-    "social media",
+    "Social Media",
     "Meta",
     "Facebook",
     "Instagram",
     "Google",
     "YouTube",
-    "utility"
+    "Utility"
   ],
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
