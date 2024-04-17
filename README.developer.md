@@ -68,7 +68,6 @@ const factory = new SMPFactory({
 });
 
 const result = await factory.operate();
-console.log(result);
 ```
 
 ### Support and Contributions

@@ -70,7 +70,6 @@ const factory = new SMPFactory({
 });
 
 const channelDetails = await factory.operate();
-console.log(channelDetails);
 ```
 
 ### Retrieving Channel Subscriptions
@@ -90,7 +89,7 @@ const factory = new SMPFactory({
 });
 
 const subscriptions = await factory.operate();
-console.log(subscriptions);
+
 ```
 
 ### Generating Authentication URL for Google
@@ -110,7 +109,7 @@ const factory = new SMPFactory({
 });
 
 const authUrl = await factory.operate();
-console.log(authUrl);
+
 ```
 
 ````typescript
@@ -124,7 +123,7 @@ const factory = new SMPFactory({
 });
 
 const posts = await factory.operate();
-console.log(posts);````
+````
 
 For more examples and detailed documentation, please refer to the [API Reference](API_REFERENCE.md).
 

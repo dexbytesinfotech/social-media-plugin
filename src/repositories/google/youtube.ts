@@ -1,10 +1,28 @@
+/**
+ * YoutubeRepo class provides methods to interact with the Youtube API for various operations such as
+ * fetching channel details, subscriptions, playlists, playlist items, sections, languages, regions,
+ * videos, video details, and activities.
+ * @class
+ */
 import { Youtube } from '../../resources/google/youtube/youtube.ChannelDetails';
+
 class YoutubeRepo {
   private payload: any;
+
+  /**
+   * Constructor for YoutubeRepo class.
+   * @constructor
+   * @param {any} payload - The payload containing necessary data for API requests.
+   */
   constructor(payload: any) {
     this.payload = payload;
   }
 
+  /**
+   * Fetches details of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel details.
+   */
   async channelDetails() {
     const { accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -12,6 +30,11 @@ class YoutubeRepo {
     return channelDetails;
   }
 
+  /**
+   * Fetches subscriptions of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel subscriptions.
+   */
   async channelSubscriptions() {
     const { channelId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -19,12 +42,23 @@ class YoutubeRepo {
     return subscriptions;
   }
 
+  /**
+   * Fetches playlists of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel playlists.
+   */
   async channelPlaylists() {
     const { channelId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
     const playlists = channel.fetchChannelPlaylists(channelId, params);
     return playlists;
   }
+
+  /**
+   * Fetches items of a specific playlist on Youtube.
+   * @async
+   * @returns {Promise<any>} The playlist items.
+   */
   async channelPlaylistItems() {
     const { playlistId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -32,6 +66,11 @@ class YoutubeRepo {
     return playlistsItems;
   }
 
+  /**
+   * Fetches sections of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel sections.
+   */
   async channelSections() {
     const { channelId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -39,6 +78,11 @@ class YoutubeRepo {
     return sections;
   }
 
+  /**
+   * Fetches supported languages on Youtube.
+   * @async
+   * @returns {Promise<any>} The supported languages.
+   */
   async languages() {
     const { accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -46,6 +90,11 @@ class YoutubeRepo {
     return languages;
   }
 
+  /**
+   * Fetches supported regions on Youtube.
+   * @async
+   * @returns {Promise<any>} The supported regions.
+   */
   async regions() {
     const { accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -53,6 +102,11 @@ class YoutubeRepo {
     return regions;
   }
 
+  /**
+   * Fetches videos of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel videos.
+   */
   async channelVideos() {
     const { channelId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -60,6 +114,11 @@ class YoutubeRepo {
     return videos;
   }
 
+  /**
+   * Fetches details of a specific Youtube video.
+   * @async
+   * @returns {Promise<any>} The video details.
+   */
   async channelVideoDetails() {
     const { videoId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
@@ -67,6 +126,11 @@ class YoutubeRepo {
     return videoDetails;
   }
 
+  /**
+   * Fetches activities of a specific Youtube channel.
+   * @async
+   * @returns {Promise<any>} The channel activities.
+   */
   async channelActivities() {
     const { channelId, accessToken, params } = this.payload;
     const channel = new Youtube(accessToken);
