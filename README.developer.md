@@ -8,14 +8,9 @@ social-media-plugin is an npm package designed to simplify the process of fetchi
 
 To install @dexbytes/social-media-plugin use npm or yarn:
 
-```bash
-npm install @dexbytes/social-media-plugin
 ```
+npm install @dexbytes/social-media-plugin
 
-or
-
-```bash
-yarn add @dexbytes/social-media-plugin
 ```
 
 ### Usage

@@ -1,29 +1,25 @@
-This npm package is designed to simplify the process of fetching data from various platforms such as YouTube, Facebook, and Instagram. Leveraging access tokens, developers can seamlessly integrate this package into their projects to access platform data securely and efficiently. Additionally, the package facilitates the generation of access tokens, streamlining the setup process for users.
+This npm package is designed to simplify the process of fetching data from  YouTube, Facebook, and Instagram. Leveraging access tokens, developers can seamlessly integrate this package into their projects to access platform data securely and efficiently. Additionally, the package facilitates the generation of access tokens, streamlining the setup process for users.
 
 ### Getting Started
 
 Before using this package, developers must obtain developer accounts on the desired platforms. This involves registering as a developer and acquiring necessary credentials, including API keys and secrets. These credentials serve as the foundation for accessing platform data securely.
 
-To utilize @dexbytes/social-media-plugin effectively:
-You can also refer to our example repositiory https://github.com/dexbytesinfotech/smp-examples.git
 
 ### Setup
 
-1. **Installation**: Install the package using npm or yarn:
+1. **Installation**: Install the package using npm
 
    ```
    npm install @dexbytes/social-media-plugin
-   ```
-
-   or
-
-   ```
-   yarn add @dexbytes/social-media-plugin
+   
    ```
 
 2. **Generating Access Tokens**: Utilize the provided functionality to generate access tokens for the target platforms. This step is crucial for authenticating requests and accessing platform data.
 
 3. **Configuration**: Set up the package by providing the obtained developer credentials for each platform. This ensures that the package can authenticate requests and access the desired data seamlessly.
+
+For more details about configuration and generation of access please refer to the following link :
+https://medium.com/@dexbytes/guide-for-obtaining-google-and-facebook-access-token-115117284531
 
 ### Usage
 
@@ -31,7 +27,8 @@ Once the package is installed and configured, developers can start leveraging it
 
 Certainly! Here's a more detailed README.md file for your package:
 
-````markdown
+`````
+
 # @dexbytes/social-media-plugin
 
 ## Introduction
@@ -89,7 +86,6 @@ const factory = new SMPFactory({
 });
 
 const subscriptions = await factory.operate();
-
 ```
 
 ### Generating Authentication URL for Google
@@ -109,28 +105,31 @@ const factory = new SMPFactory({
 });
 
 const authUrl = await factory.operate();
-
 ```
 
-````typescript
+```typescript
 const factory = new SMPFactory({
   resource: Resources.meta,
   module: Repositories.facebook,
   action: Actions.facebookPosts,
   payload: {
     // Set appropriate parameters
-  }
+  },
 });
 
 const posts = await factory.operate();
-````
+```
+`````
 
-For more examples and detailed documentation, please refer to the [API Reference](API_REFERENCE.md).
+To utilize @dexbytes/social-media-plugin effectively:
+You can also refer to our example repositiory https://github.com/dexbytesinfotech/smp-examples.git
 
 ## Features
+
 YouTube API Integration: Fetch channel details, videos, playlists, and more.
 Facebook API Integration: Retrieve page details, posts, photos, videos, events, etc.
 Instagram API Integration: Get account details, media, stories, live media, etc.
+
 - **Channel Details:** Fetch detailed information about a YouTube channel.
 - **Channel Subscriptions:** Retrieve a channel's subscriptions.
 - **Channel Playlists:** Get a list of playlists associated with a channel.
@@ -141,13 +140,10 @@ Instagram API Integration: Get account details, media, stories, live media, etc.
 - **Channel Activities:** Retrieve a channel's recent activities.
 - **Google Authentication:** Generate authentication URL and obtain access tokens.
 
-
-
 ### License
 
 This package is licensed under the [MIT License](https://opensource.org/licenses/MIT), granting developers the freedom to use, modify, and distribute the software within their projects.
 
+```By incorporating this npm package into your projects, accessing data from platforms like YouTube, Facebook, and Instagram becomes more accessible and streamlined. Whether you are a seasoned developer or just getting started, this package simplifies the integration process and enhances the functionality of your applications.
 
-
-````By incorporating this npm package into your projects, accessing data from platforms like YouTube, Facebook, and Instagram becomes more accessible and streamlined. Whether you are a seasoned developer or just getting started, this package simplifies the integration process and enhances the functionality of your applications.
-````
+```

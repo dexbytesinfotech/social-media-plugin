@@ -31,7 +31,9 @@
     "Instagram",
     "Google",
     "YouTube",
-    "Utility"
+    "Utility",
+    "TypeScript",
+    "Axios"
   ],
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
